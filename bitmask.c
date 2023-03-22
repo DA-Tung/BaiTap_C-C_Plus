@@ -10,13 +10,13 @@ Write your code in this editor and press "Run" button to compile and execute it.
 #include <stdint.h>
 typedef enum{
     SHIRT          = 1 << 0,   //0b00000001
-    SHORT        = 1 << 1,   //0b00000010
-    SKIRT         = 1 << 2,   //0b00000100
-    DRESS         = 1 << 3,   //0b00001000
-    RING        = 1 << 4,   //0b00010000
-    BRACELET    = 1 << 5,   //0b00100000
-    SHOES        = 1 << 6,   //0b01000000
-    BAG         = 1 << 7    //0b10000000
+    SHORT          = 1 << 1,   //0b00000010
+    SKIRT          = 1 << 2,   //0b00000100
+    DRESS          = 1 << 3,   //0b00001000
+    RING           = 1 << 4,   //0b00010000
+    BRACELET       = 1 << 5,   //0b00100000
+    SHOES          = 1 << 6,   //0b01000000
+    BAG            = 1 << 7    //0b10000000
 }individual_items;
 
 void Add_cart(uint8_t *cart, individual_items items)
