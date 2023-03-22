@@ -9,192 +9,192 @@ Write your code in this editor and press "Run" button to compile and execute it.
 #include <stdio.h>
 #include <stdint.h>
 typedef enum{
-    AO          = 1 << 0,   //0b00000001
-    QUAN        = 1 << 1,   //0b00000010
-    VAY         = 1 << 2,   //0b00000100
-    DAM         = 1 << 3,   //0b00001000
-    NHAN        = 1 << 4,   //0b00010000
-    VONG_TAY    = 1 << 5,   //0b00100000
-    GIAY        = 1 << 6,   //0b01000000
-    TUI         = 1 << 7    //0b10000000
-}DoDungCaNhan;
+    SHIRT          = 1 << 0,   //0b00000001
+    SHORT        = 1 << 1,   //0b00000010
+    SKIRT         = 1 << 2,   //0b00000100
+    DRESS         = 1 << 3,   //0b00001000
+    RING        = 1 << 4,   //0b00010000
+    BRACELET    = 1 << 5,   //0b00100000
+    SHOES        = 1 << 6,   //0b01000000
+    BAG         = 1 << 7    //0b10000000
+}individual_items;
 
-void Them_Vao_Gio_Hang(uint8_t *gio_hang, DoDungCaNhan ten_do_dung)
+void Add_cart(uint8_t *cart, individual_items items)
 {
-    *gio_hang |= ten_do_dung;
+    *cart |= items;
 }
 
-void Xoa_Khoi_Gio_Hang(uint8_t *gio_hang, DoDungCaNhan ten_do_dung)
+void Delete_cart(uint8_t *cart, individual_items items)
 {
-    *gio_hang &= ~ten_do_dung;
+    *cart &= ~items;
 }
 
-void Kiem_Tra_San_Pham(uint8_t gio_hang, DoDungCaNhan ten_do_dung)
+void Check_items(uint8_t cart, individual_items items)
 {
-    if(ten_do_dung & (1 << 0))
+    if(items & (1 << 0))
     {
-        if(gio_hang & (1 << 0))
+        if(cart & (1 << 0))
         {
-            printf("Gio hang co : AO\n");
+            printf("THE CART HAVE :  : SHIRT\n");
         }
         else
         {
-            printf("Gio hang khong co : AO\n");  
+            printf("THE CART DON'T HAVE :  : SHIRT\n");  
         }
     }
     
-    if(ten_do_dung & (1 << 1))
+    if(items & (1 << 1))
     {
-        if(gio_hang & (1 << 1))
+        if(cart & (1 << 1))
         {
-            printf("Gio hang co : QUAN\n");
+            printf("THE CART HAVE :  : SHORT\n");
         }
         else
         {
-            printf("Gio hang khong co : QUAN\n");  
+            printf("THE CART DON'T HAVE :  : SHORT\n");  
         }        
     }   
 
-    if(ten_do_dung & (1 << 2))
+    if(items & (1 << 2))
     {
-        if(gio_hang & (1 << 2))
+        if(cart & (1 << 2))
         {
-            printf("Gio hang co : VAY\n");
+            printf("THE CART HAVE :  : SKIRT\n");
         }
         else
         {
-            printf("Gio hang khong co : VAY\n");  
+            printf("THE CART DON'T HAVE :  : SKIRT\n");  
         }        
     }
     
-    if(ten_do_dung & (1 << 3))
+    if(items & (1 << 3))
     {
-        if(gio_hang & (1 << 3))
+        if(cart & (1 << 3))
         {
-            printf("Gio hang co : DAM\n");
+            printf("THE CART HAVE :  : DRESS\n");
         }
         else
         {
-            printf("Gio hang khong co : DAM\n");  
+            printf("THE CART DON'T HAVE :  : DRESS\n");  
         }        
     }
     
-    if(ten_do_dung & (1 << 4))
+    if(items & (1 << 4))
     {
-        if(gio_hang & (1 << 4))
+        if(cart & (1 << 4))
         {
-            printf("Gio hang co : NHAN\n");
+            printf("THE CART HAVE :  : RING\n");
         }
         else
         {
-            printf("Gio hang khong co : NHAN\n");  
+            printf("THE CART DON'T HAVE :  : RING\n");  
         }        
     }
     
-    if(ten_do_dung & (1 << 5))
+    if(items & (1 << 5))
     {
-        if(gio_hang & (1 << 5))
+        if(cart & (1 << 5))
         {
-            printf("Gio hang co : VONG_TAY\n");
+            printf("THE CART HAVE :  : BRACELET\n");
         }
         else
         {
-            printf("Gio hang khong co : VONG_TAY\n");  
+            printf("THE CART DON'T HAVE :  : BRACELET\n");  
         }        
     }
     
-    if(ten_do_dung & (1 << 6))
+    if(items & (1 << 6))
     {
-        if(gio_hang & (1 << 6))
+        if(cart & (1 << 6))
         {
-            printf("Gio hang co : GIAY\n");
+            printf("THE CART HAVE :  : SHOES\n");
         }
         else
         {
-            printf("Gio hang khong co : GIAY\n");  
+            printf("THE CART DON'T HAVE :  : SHOES\n");  
         }        
     }
     
-    if(ten_do_dung & (1 << 7))
+    if(items & (1 << 7))
     {
-        if(gio_hang & (1 << 7))
+        if(cart & (1 << 7))
         {
-            printf("Gio hang co : TUI\n");
+            printf("THE CART HAVE :  : BAG\n");
         }        
         else
         {
-            printf("Gio hang khong co : TUI\n");  
+            printf("THE CART DON'T HAVE :  : BAG\n");  
         }        
     }    
 }
 
-void Hien_Thi_Gio_Hang(uint8_t gio_hang)
+void Show_cart(uint8_t cart)
 {
-    //DoDungCaNhan do_dung;
+    //individual_items do_dung;
     
-    printf("Hien thi gio hang : ");
+    printf("SHOW THE CART : ");
     
-    if(gio_hang & (1 << 0))
+    if(cart & (1 << 0))
     {
-        printf("AO ");
+        printf("SHIRT ");
     }
     
-    if(gio_hang & (1 << 1))
+    if(cart & (1 << 1))
     {
-        printf("QUAN ");
+        printf("SHORT ");
     }  
     
-    if(gio_hang & (1 << 2))
+    if(cart & (1 << 2))
     {
-        printf("VAY ");
+        printf("SKIRT ");
     }
     
-    if(gio_hang & (1 << 3))
+    if(cart & (1 << 3))
     {
-        printf("DAM ");
+        printf("DRESS ");
     } 
     
-    if(gio_hang & (1 << 4))
+    if(cart & (1 << 4))
     {
-        printf("NHAN ");
+        printf("RING ");
     }
     
-    if(gio_hang & (1 << 5))
+    if(cart & (1 << 5))
     {
-        printf("VONG_TAY ");
+        printf("BRACELET ");
     }
     
-    if(gio_hang & (1 << 6))
+    if(cart & (1 << 6))
     {
-        printf("GIAY ");
+        printf("SHOES ");
     }
     
-    if(gio_hang & (1 << 7))
+    if(cart & (1 << 7))
     {
-        printf("TUI ");
+        printf("BAG ");
     }  
     
     printf("\n");
 }
 
-void HIen_Thi(DoDungCaNhan ten_do_dung)
+void HIen_Thi(individual_items items)
 {
 
 }
 
 int main(int argc, char const *argv[])
 {
-    uint8_t GIO_HANG;
+    uint8_t cart;
     
-    Them_Vao_Gio_Hang(&GIO_HANG, AO|QUAN|VAY|DAM|NHAN);
+    Add_cart(&cart, SHIRT|SHORT|SKIRT|DRESS|RING);
     
-    Hien_Thi_Gio_Hang(GIO_HANG);
+    Show_cart(cart);
     
-    Xoa_Khoi_Gio_Hang(&GIO_HANG, AO|VAY);
+    Delete_cart(&cart, SHIRT|SKIRT);
 
-    Kiem_Tra_San_Pham(GIO_HANG, AO|NHAN|VAY);
+    Check_items(cart, SHIRT|RING|SKIRT);
  
-    Hien_Thi_Gio_Hang(GIO_HANG);    
+    Show_cart(cart);    
 
     return 0;
 }
