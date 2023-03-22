@@ -18,21 +18,21 @@ typedef enum{
     BRACELET       = 1 << 5,   //0b00100000
     SHOES          = 1 << 6,   //0b01000000
     BAG            = 1 << 7    //0b10000000
-}individual_items;
+}INDIVIDUAL_ITEMS;
 
-char *cart_items[] = {"SHIRT","SHORT","SKIRT","DRESS","RING","BRACELET","SHOES","BAG"};
+char *CART_ITEMS[] = {"SHIRT","SHORT","SKIRT","DRESS","RING","BRACELET","SHOES","BAG"};
 
-void Add_cart(uint8_t *cart, individual_items items)
+void ADD_CART(uint8_t *cart, INDIVIDUAL_ITEMS items)
 {
     *cart |= items;
 }
 
-void Delete_cart(uint8_t *cart, individual_items items)
+void DELETE_CART(uint8_t *cart, INDIVIDUAL_ITEMS items)
 {
     *cart &= ~items;
 }
 
-void Check_items(uint8_t cart, individual_items items)
+void CHECK_ITEMS(uint8_t cart, INDIVIDUAL_ITEMS items)
 {
     for(int i = 0; i < 8; i++)
     {
@@ -40,17 +40,17 @@ void Check_items(uint8_t cart, individual_items items)
         {
             if(cart & (1 << i))
             {
-                printf("THE CART HAVE : %s\n", cart_items[i]);
+                printf("THE CART HAVE : %s\n", CART_ITEMS[i]);
             }
             else
             {
-                printf("THE CART DON'T HAVE : %s\n", cart_items[i]);  
+                printf("THE CART DON'T HAVE : %s\n", CART_ITEMS[i]);  
             }              
         }
     }
 }
 
-void Show_cart(uint8_t cart)
+void SHOW_CART(uint8_t cart)
 {
     printf("SHOW THE CART : ");
     
@@ -58,14 +58,14 @@ void Show_cart(uint8_t cart)
     {
         if(cart & (1 << i))
         {
-            printf("%s ", cart_items[i]);
+            printf("%s ", CART_ITEMS[i]);
         }
     }
     
     printf("\n");
 }
 
-void Show(individual_items items)
+void HIen_Thi(INDIVIDUAL_ITEMS items)
 {
 
 }
@@ -74,15 +74,15 @@ int main(int argc, char const *argv[])
 {
     uint8_t cart;
     
-    Add_cart(&cart, SHIRT|SHORT|SKIRT|DRESS|RING);
+    ADD_CART(&cart, SHIRT|SHORT|SKIRT|DRESS|RING);
     
-    Show_cart(cart);
+    SHOW_CART(cart);
     
-    Delete_cart(&cart, SHIRT|SKIRT);
+    DELETE_CART(&cart, SHIRT|SKIRT);
 
-    Check_items(cart, SHIRT|RING|SHOES);
+    CHECK_ITEMS(cart, SHIRT|RING|SHOES);
  
-    Show_cart(cart);    
+    SHOW_CART(cart);    
 
     return 0;
 }
