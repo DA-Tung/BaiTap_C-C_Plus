@@ -65,7 +65,7 @@ void Show_cart(uint8_t cart)
     printf("\n");
 }
 
-void HIen_Thi(individual_items items)
+void Show(individual_items items)
 {
 
 }
