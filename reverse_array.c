@@ -21,10 +21,11 @@ void reverse_arr(char old_arr[],char new_arr[])
     int new_index_pos = 0;
     int index;
     int last_old_pos = n - 1;
-    int pos;
+    int pos = n - 1;
     
-    for(pos = n - 1; pos >= -1; pos--)
+    while(pos >= -1)
     {
+        pos--;
         if(old_arr[pos] == ' ' || pos == -1)
         {
             for(index = pos + 1; index <= last_old_pos; index++)
