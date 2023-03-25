@@ -6,64 +6,50 @@ Write your code in this editor and press "Run" button to compile and execute it.
 
 *******************************************************************************/
 
-#include <stdio.h> 
-#include <stdint.h> 
+#include <stdio.h>
 #include <string.h>
+#include <stdint.h>
 
-//char arr[] = "Make a mistake. All your attempts to create a chilling effect, a throttling effect, a strangulating effect on open fearless speech relating to public influence will not stop either Rahul Gandhi or the Congress Party";
-char arr[] = "Code, Compile, Run and Debug C program online";
+//char arr[] = "Code, Compile, Run";
+char arr[] = "Make a mistake. All your attempts to create a chilling effect, a throttling effect, a strangulating effect on open fearless speech relating to public influence will not stop either Rahul Gandhi or the Congress Party";
+char rev_arr[] = "";  
 
-
-void concatenation_str(char before_str[],char after_str[])
-{
-    int length_before = strlen(before_str);
-    int length_after = strlen(after_str);
-    int j = 0;
-    int i;
-    before_str[length_before] = ' ';
-    for(i = length_before + 1; i < length_before + length_after; i++)
-    {
-        
-        before_str[i] = after_str[j];
-        j++;
-    }
-}
-
-void reverse_char(char rev_arr[])
-{
-    int n = strlen(rev_arr) - 1;
-    int i = 0;
-    char rev;
-    while(i < n)
-    {
-        rev = rev_arr[i];
-        rev_arr[i] = rev_arr[n];
-        rev_arr[n] = rev; 
-        n--;
-        i++;
-    }
-}
-
-void reverse_array(char old_arr[], char new_array[])
+// Reverse Arry
+void reverse_arr(char old_arr[],char new_arr[])
 {
     int n = strlen(old_arr);
-    int j;
-    for(int i = n - 1; i >= 0; i++)
-    {   
-        char temp[] = "";
-        for(j = 0; i >= 0 && old_arr[i] != ' ';i-- , j++)
+    int new_pos = 0;
+    int old_pos;
+    int last_pos = n - 1;
+    int pos;
+    
+    for(pos = n - 1; pos >= -1; pos--)
+    {
+        if(old_arr[pos] == ' ' || pos == -1)
         {
-            temp[j] = old_arr[i];
+            for(old_pos = pos + 1; old_pos <= last_pos; old_pos++)
+            {
+                new_arr[new_pos] = old_arr[old_pos];
+                new_pos++;
+            }
+            last_pos = pos - 1;
+            if(last_pos >= 0)
+            {
+                new_arr[new_pos] = ' ';
+                new_pos++;
+            }
         }
-
-
     }
 }
 
 int main(int argc, char const *argv[]) 
-{    
-    //concatenation_str(new_arr,arr1);
-    return 0;
+{
+    reverse_arr(arr,rev_arr);
+    int n = strlen(rev_arr);
+    
+    printf("%s", rev_arr);
+    printf("\n");
+    printf("%d", n);
 }
 
 
