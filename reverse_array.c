@@ -18,25 +18,25 @@ char rev_arr[] = "";
 void reverse_arr(char old_arr[],char new_arr[])
 {
     int n = strlen(old_arr);
-    int new_pos = 0;
-    int old_pos;
-    int last_pos = n - 1;
+    int new_index_pos = 0;
+    int index;
+    int last_old_pos = n - 1;
     int pos;
     
     for(pos = n - 1; pos >= -1; pos--)
     {
         if(old_arr[pos] == ' ' || pos == -1)
         {
-            for(old_pos = pos + 1; old_pos <= last_pos; old_pos++)
+            for(index = pos + 1; index <= last_old_pos; index++)
             {
-                new_arr[new_pos] = old_arr[old_pos];
-                new_pos++;
+                new_arr[new_index_pos] = old_arr[index];
+                new_index_pos++;
             }
-            last_pos = pos - 1;
-            if(last_pos >= 0)
+            last_old_pos = pos - 1;
+            if(last_old_pos >= 0)
             {
-                new_arr[new_pos] = ' ';
-                new_pos++;
+                new_arr[new_index_pos] = ' ';
+                new_index_pos++;
             }
         }
     }
