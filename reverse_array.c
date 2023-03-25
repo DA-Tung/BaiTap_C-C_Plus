@@ -15,37 +15,59 @@ char arr[] = "Make a mistake. All your attempts to create a chilling effect, a t
 char rev_arr[] = "";  
 
 // Reverse Arry
-void reverse_arr(char old_arr[],char new_arr[])
+void REVERSE_ARR(char old_arr[],char new_arr[])
 {
-    int n = strlen(old_arr);
-    int new_index_pos = 0;
-    int index;
-    int last_old_pos = n - 1;
-    int pos = n - 1;
+    // calculator length of array 
+    int length_arr = strlen(old_arr);   
+
+    // new_index : variable counter of new_arr array    
+    int new_index = 0;  
+
+    // s_char_index : start position of a word in the array            
+    int s_char_index;   
+
+    // e_char_index : end position of a word in the array
+    int e_char_index = length_arr - 1;   
+
+    // check_pos : check character at current position 
+    int check_pos = length_arr - 1; 
     
-    while(pos >= -1)
+    // Verify first word in array old_arr
+    while(check_pos >= -1)  
     {
-        pos--;
-        if(old_arr[pos] == ' ' || pos == -1)
+        // Check character spacer or position = -1(Verify first word in array)
+        if(old_arr[check_pos] == ' ' || check_pos == -1)    
         {
-            for(index = pos + 1; index <= last_old_pos; index++)
+            // For Loop : start to end of each word in array old_arr and assign for array arr
+            for(s_char_index = check_pos + 1; s_char_index <= e_char_index; s_char_index++) 
             {
-                new_arr[new_index_pos] = old_arr[index];
-                new_index_pos++;
+                // assign character old_arr to new_arr
+                new_arr[new_index] = old_arr[s_char_index]; 
+                // Increase variable counter of new_arr array   
+                new_index++;    
             }
-            last_old_pos = pos - 1;
-            if(last_old_pos >= 0)
+
+            // Assign next end position of a word in array old_arr
+            e_char_index = check_pos - 1;   
+
+            // Check end position of a word to verify add character spacer
+            if(e_char_index >= 0)   
             {
-                new_arr[new_index_pos] = ' ';
-                new_index_pos++;
+                // add character spacer for new_array
+                new_arr[new_index] = ' ';   
+                // Increase variable counter of array after add character spacer
+                new_index++;    
             }
         }
-    }
+
+        // Decrease position to cotinue check 
+        check_pos--;          
+    } 
 }
 
 int main(int argc, char const *argv[]) 
 {
-    reverse_arr(arr,rev_arr);
+    REVERSE_ARR(arr,rev_arr);
     int n = strlen(rev_arr);
     
     printf("%s", rev_arr);
