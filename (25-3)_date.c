@@ -10,27 +10,29 @@ Write your code in this editor and press "Run" button to compile and execute it.
 #include <stdint.h>
 #include <string.h>
 
-// 
-uint8_t *Date_Name[] = {"SUN","MON","TUE","WED","THU","FRI","SAT"};
+/*INITIALIZE CONSTANT -------------------------------------------------*/ 
 
-//
+// Declare dates of week
+const uint8_t *Date_Name[] = {"SUN","MON","TUE","WED","THU","FRI","SAT"};
+
+// Declare months of year
 typedef enum
 {
-    JANUARY = 1,
-    FEBRUARY = 2,
-    MARCH = 3,
-    APRIL = 4,
-    MAY = 5,
-    JUNE = 6,
-    JULY = 7,
-    AUGUST = 8,
-    SEPTEMBER = 9,
-    OCTOBER = 10,
-    NOVEMBER = 11,
-    DECEMBER = 12
+    JANUARY     = 1,
+    FEBRUARY    = 2,
+    MARCH       = 3,
+    APRIL       = 4,
+    MAY         = 5,
+    JUNE        = 6,
+    JULY        = 7,
+    AUGUST      = 8,
+    SEPTEMBER   = 9,
+    OCTOBER     = 10,
+    NOVEMBER    = 11,
+    DECEMBER    = 12
 }MONTH;
 
-//
+// Struct define timeline
 typedef struct
 {
     uint8_t Day;
@@ -38,10 +40,24 @@ typedef struct
     uint16_t Year;
 }DayMonthYear;
 
-// Funcion check month
-uint8_t NumdayofMonth(MONTH month)
+/*INITIALIZE FUNCION --------------------------------------------------*/ 
+
+uint8_t NumdayofMonth(MONTH DayofMonth);            // Check number days of Month
+uint32_t Caculation_Date(DayMonthYear Date);        // Caculation total days
+void Show_Date(DayMonthYear Date);                  // Show dates
+
+/*FUNCION CODE --------------------------------------------------------*/ 
+
+// 
+/*  This funcion is used to check number days of Month
+
+    Month have 31 days : JANUARY, MARCH, MAY, JULY, AUGUST, OCTOBER, DECEMBER
+    Month have 30 days : APRIL, JUNE, SEPTEMBER, NOVEMBER
+    Month have 28 days : FEBRUARY
+*/
+uint8_t NumdayofMonth(MONTH DayofMonth)
 {
-    switch(month)
+    switch(DayofMonth)
     {
         case JANUARY :
         case MARCH :
@@ -70,63 +86,66 @@ uint8_t NumdayofMonth(MONTH month)
     }
 }
 
-// Funcion caculation number days
+/*  This Funcion is used to caculation total days of all months and years */
+
 uint32_t Caculation_Date(DayMonthYear Date)
 {
-    uint32_t sum_dates = 0;
-    uint8_t check_year = 0;
+    uint32_t Total_Dates = 0;                                       // Total day
+    uint8_t Check_LeapYear = 0;                                     // Check special Leap Year
     
-    // Caculation number days of all year
-    sum_dates += 365*(Date.Year - 1);
+    Total_Dates += 365*(Date.Year - 1);                             // Caculation number days of all year
     
-    // Caculation leap Year
-    for(uint16_t year = 1; year < Date.Year; year++)
+    for(uint16_t year = 1; year < Date.Year; year++)                // Caculation Leap Year
     {
         if(year%4 == 0)
         {
-            sum_dates++;
+            Total_Dates++;
         }
         
         if(year%100 == 0)
         {
-            if(year%400 != 0)   sum_dates--;
+            if(year%400 != 0)   Total_Dates--;
         }
     }  
     
-    if(Date.Year%100 == 0)
+    if(Date.Year%100 == 0)                                          // Special leap year                                        
     {
-        if(Date.Year%400 == 0) check_year = 1;
-        else check_year = 0;
+        if(Date.Year%400 == 0) Check_LeapYear = 1;
+        else Check_LeapYear = 0;
+    }
+    else
+    {
+        if(Date.Year%4 == 0)    Check_LeapYear = 1;
+        else Check_LeapYear = 0;
     }
     
-    // Caculation number days of all month
-    for(uint8_t month = 1; month < Date.Month; month++)
+    for(uint8_t month = 1; month < Date.Month; month++)             // Caculation number days of all month
     {
-        sum_dates += NumdayofMonth(month);
+        Total_Dates += NumdayofMonth(month);
     }
     
     if(Date.Month > 2)
     {
-        if(check_year == 1) sum_dates += 1;
+        if(Check_LeapYear == 1) Total_Dates += 1;
     }
     
-    // Caculation day
-    sum_dates += Date.Day;
+    Total_Dates += Date.Day;                                       // Caculation day
     
-    return sum_dates;
+    return Total_Dates;
 }
 
 // Funcion show date
 void Show_Date(DayMonthYear Date)
 {
-    uint32_t sum_dates = Caculation_Date(Date);
+    uint32_t Total_Dates = Caculation_Date(Date);
     
-    uint32_t check_date = sum_dates%7;
+    uint32_t check_date = Total_Dates%7;
     
     printf("%s", Date_Name[check_date]);
 }
 
-// Main
+/*MAIN CODE -----------------------------------------------------------*/
+
 int main()
 {
     DayMonthYear new_Date;
