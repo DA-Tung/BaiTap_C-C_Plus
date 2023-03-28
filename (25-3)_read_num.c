@@ -90,7 +90,10 @@ void Read_Num(int num)
         
         if(check_pos == 0)
         {
-            printf("%s ", Number_text[arr_num[pos]]);
+            if(arr_num[pos] != 0 || pos%3 != 0)
+            {
+                printf("%s ", Number_text[arr_num[pos]]);                
+            }
             Read_Pos(pos);
         }
     }
