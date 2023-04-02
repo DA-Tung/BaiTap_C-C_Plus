@@ -40,7 +40,7 @@ int comp_arr(const char *arr1, const char *arr2)
     return check_arr;
 } 
 
-void conv_to_pointer_arr(const char old_arr[],char new_arr[][10], int *length_arr)
+void conv_to_new_arr(const char old_arr[],char new_arr[][10], int *length_arr)
 {
     int length_new_arr = 0;
 
@@ -124,7 +124,7 @@ int main()
 {
     int length_conv_arr;
 
-    conv_to_pointer_arr(test_arr,conv_new_arr, &length_conv_arr); 
+    conv_to_new_arr(test_arr,conv_new_arr, &length_conv_arr); 
 
     show_freq_appearance_word(conv_new_arr, length_conv_arr);
 
