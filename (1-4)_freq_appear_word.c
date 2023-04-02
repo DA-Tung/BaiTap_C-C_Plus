@@ -4,12 +4,6 @@
 
 char test_arr[] = "MOT NGOI NHA, HAI NGOI NHA, TONG CO HAI NHA";
 
-//char test_arr[] = "MOT BA";
-
-#define length_array(arr)   (sizeof(arr)/sizeof(arr[0]))
-
-//char test_arr[] = "MOT BA HAI";
-
 char conv_new_arr[50][10];
 
 // void delete_arr(char de_arr[], int length)
