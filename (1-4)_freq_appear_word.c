@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdint.h>
 
-char test_arr[] = "MOT NGOI NHA, HAI NGOI NHA, TONG CO HAI NHA";
+char test_arr[] = "MOT NGOI NHA, HAI NGOI NHA, TONG CO HAI NHA, MOT CON DUONG";
 
 char conv_new_arr[50][10];
 
@@ -96,13 +96,10 @@ void show_freq_appearance_word(char arr[][10], int length_arr)
 
     for(int count_1 = 0; count_1 < length_arr - 1; count_1++)
     {
-        char *str1 = arr[count_1];
-        if(arr[count_1] != "")
         {                                
             for(int count_2 = count_1 + 1; count_2 < length_arr; count_2++)
-            {
-                char *str2 = arr[count_2];               
-                if(arr[count_2] != "" && check_word[count_1] == 1 && check_word[count_2] == 1)
+            {             
+                if(check_word[count_1] == 1 && check_word[count_2] == 1)
                 {
 
                     int value_comp = comp_arr(arr[count_1],arr[count_2]);
@@ -115,7 +112,7 @@ void show_freq_appearance_word(char arr[][10], int length_arr)
             }
         }
 
-        if(freq_appear > 1 && arr[count_1] != "")
+        if(freq_appear > 1)
         {
             printf("Freq appearance of word %s : %d times\n", arr[count_1], freq_appear);
             freq_appear = 1;
