@@ -12,13 +12,13 @@ char test_arr[] = "MOT NGOI NHA, HAI NGOI NHA, TONG CO HAI NHA";
 
 char conv_new_arr[50][10];
 
-void delete_arr(char de_arr[], int length)
-{
-    for(int i = 0; i <= length; i++)
-    {
-        de_arr[i] = '\0';
-    }
-} 
+// void delete_arr(char de_arr[], int length)
+// {
+//     for(int i = 0; i <= length; i++)
+//     {
+//         de_arr[i] = '\0';
+//     }
+// } 
 
 int comp_arr(const char *arr1, const char *arr2)
 {
