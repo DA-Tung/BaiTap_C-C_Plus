@@ -1,9 +1,7 @@
 /******************************************************************************
-
                             Online C Compiler.
                 Code, Compile, Run and Debug C program online.
 Write your code in this editor and press "Run" button to compile and execute it.
-
 *******************************************************************************/
 
 #include <stdio.h>
@@ -87,7 +85,22 @@ void Read_Num(int num)
                 check_pos = 0;
             }
         }
-        
+        else if(pos%3 == 2)
+        {
+            if(arr_num[pos] == 0 && arr_num[pos-1] == 0 && arr_num[pos-2] == 0)
+            {
+                pos = pos - 2;
+                check_pos = 1;
+            }
+        }
+        else if(pos%3 == 0)
+        {
+            if(arr_num[pos] == 5 && arr_num[pos+1] != 0)
+            {
+                printf("LAM ");
+                check_pos = 1;
+            }
+        }
         if(check_pos == 0)
         {
             if(arr_num[pos] != 0 || pos%3 != 0)
@@ -101,7 +114,8 @@ void Read_Num(int num)
 
 int main()
 {    
-    Read_Num(1005719);
+    Read_Num(1000715);
     
     return 0;
 }
+
