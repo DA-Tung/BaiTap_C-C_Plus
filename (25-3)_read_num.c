@@ -8,31 +8,28 @@ Write your code in this editor and press "Run" button to compile and execute it.
 #include <stdint.h>
 #include <string.h>
 
-char *Number_text[] = {"KHONG","MOT","HAI","BA","BON","NAM","SAU","BAY","TAM","CHIN"};
+/*INITIALIZE CONSTANT -------------------------------------------------*/
+const char *Number_text[] = {"KHONG","MOT","HAI","BA","BON","NAM","SAU","BAY","TAM","CHIN"};
 
-char *Unit_Even[] = {"NGHIN","TRIEU","TY"};
+const char *Unit_Even[] = {"NGHIN","TRIEU","TY"};
 
-char *Unit_Odd[] = {"MUOI","TRAM"};
+const char *Unit_Odd[] = {"MUOI","TRAM"};
 
-// typedef enum
-// {
-//     NGHIN = 1,
-//     TRIEU = 2,
-//     TY = 3,
-// }Unit_Even;
+/*INITIALIZE FUNCION --------------------------------------------------*/ 
+void Read_Pos(int num);
+void Read_Num(int num);
 
-// typedef enum
-// {
-//     MUOI = 1,
-//     TRAM = 2,
-// }Unit_Odd;
+/*FUNCION CODE --------------------------------------------------------*/ 
 
+/*
+    This funcion is used to read position of each number
+*/ 
 void Read_Pos(int num)
 {
     if(num > 0)
     {
-        int mod_num = num%3;
-        int div_num = num/3;
+        int mod_num = num%3;    // check position unit thousand, million, billion
+        int div_num = num/3;    // check position uint hundred ... 
     
         if(mod_num != 0)
         {
@@ -46,9 +43,14 @@ void Read_Pos(int num)
     }
 }
 
+/*
+    This funcion is used to read number
+*/ 
 void Read_Num(int num)
 {
-    //int arr[];
+    /*
+        This code is used to save each number in array and check how many numbers in number
+    */     
     int arr_num[15] = {0};
     int count_num = 0;
     
@@ -59,16 +61,26 @@ void Read_Num(int num)
         count_num++;
     }
     
-    //printf("%d",count_num);
-    
+    /*
+        Read Number
+    */ 
     for(int pos = count_num - 1; pos >= 0; pos--)
     {
-        //printf("%s ", Number_text[arr_num[pos]]);
-        
-        //Read_Pos(pos);
+        // bit check special position
         int check_pos = 0;
         
-        if(pos%3 == 1)
+        // Check position to read number 5
+        if(pos%3 == 0)
+        {
+            if(arr_num[pos] == 5 && arr_num[pos+1] != 0)
+            {
+                printf("LAM ");
+                check_pos = 1;
+            }
+        }
+        
+        // Check position to read number 0,1
+        else if(pos%3 == 1)
         {
             if(arr_num[pos] == 0)
             {
@@ -85,6 +97,8 @@ void Read_Num(int num)
                 check_pos = 0;
             }
         }
+        
+        // Check position of number 000 at uint thousand,million,billion to ingore
         else if(pos%3 == 2)
         {
             if(arr_num[pos] == 0 && arr_num[pos-1] == 0 && arr_num[pos-2] == 0)
@@ -93,14 +107,8 @@ void Read_Num(int num)
                 check_pos = 1;
             }
         }
-        else if(pos%3 == 0)
-        {
-            if(arr_num[pos] == 5 && arr_num[pos+1] != 0)
-            {
-                printf("LAM ");
-                check_pos = 1;
-            }
-        }
+        
+        // Read number and position number
         if(check_pos == 0)
         {
             if(arr_num[pos] != 0 || pos%3 != 0)
@@ -112,10 +120,15 @@ void Read_Num(int num)
     }
 }
 
+/*MAIN CODE -----------------------------------------------------------*/
 int main()
 {    
-    Read_Num(1000715);
+    int num;
+    scanf("%d",&num);
+    Read_Num(num);
     
     return 0;
 }
+
+
 
