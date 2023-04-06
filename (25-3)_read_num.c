@@ -1,14 +1,9 @@
-/******************************************************************************
-                            Online C Compiler.
-                Code, Compile, Run and Debug C program online.
-Write your code in this editor and press "Run" button to compile and execute it.
-*******************************************************************************/
-
 #include <stdio.h>
 #include <stdint.h>
 #include <string.h>
 
 /*INITIALIZE CONSTANT -------------------------------------------------*/
+
 const char *Number_text[] = {"KHONG","MOT","HAI","BA","BON","NAM","SAU","BAY","TAM","CHIN"};
 
 const char *Unit_Even[] = {"NGHIN","TRIEU","TY"};
@@ -16,15 +11,16 @@ const char *Unit_Even[] = {"NGHIN","TRIEU","TY"};
 const char *Unit_Odd[] = {"MUOI","TRAM"};
 
 /*INITIALIZE FUNCION --------------------------------------------------*/ 
-void Read_Pos(int num);
-void Read_Num(int num);
+
+void READ_POSITION(int num);
+void READ_NUMBER(int num);
 
 /*FUNCION CODE --------------------------------------------------------*/ 
 
 /*
     This funcion is used to read position of each number
 */ 
-void Read_Pos(int num)
+void READ_POSITION(int num)
 {
     if(num > 0)
     {
@@ -46,7 +42,7 @@ void Read_Pos(int num)
 /*
     This funcion is used to read number
 */ 
-void Read_Num(int num)
+void READ_NUMBER(int num)
 {
     /*
         This code is used to save each number in array and check how many numbers in number
@@ -115,17 +111,18 @@ void Read_Num(int num)
             {
                 printf("%s ", Number_text[arr_num[pos]]);                
             }
-            Read_Pos(pos);
+            READ_POSITION(pos);
         }
     }
 }
 
 /*MAIN CODE -----------------------------------------------------------*/
+
 int main()
 {    
     int num;
     scanf("%d",&num);
-    Read_Num(num);
+    READ_NUMBER(num);
     
     return 0;
 }
