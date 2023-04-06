@@ -1,11 +1,3 @@
-/******************************************************************************
-
-                            Online C Compiler.
-                Code, Compile, Run and Debug C program online.
-Write your code in this editor and press "Run" button to compile and execute it.
-
-*******************************************************************************/
-
 #include <stdio.h>
 #include <stdint.h>
 #include <string.h>
@@ -38,24 +30,23 @@ typedef struct
     uint8_t Day;
     uint8_t Month;
     uint16_t Year;
-}DayMonthYear;
+}DAYMONTHYEAR;
 
 /*INITIALIZE FUNCION --------------------------------------------------*/ 
 
-uint8_t NumdayofMonth(MONTH DayofMonth);            // Check number days of Month
-uint32_t Caculation_Date(DayMonthYear Date);        // Caculation total days
-void Show_Date(DayMonthYear Date);                  // Show dates
+uint8_t NUMDAYOFMONTH(MONTH DayofMonth);            // Check number days of Month
+uint32_t CACULATION_DATE(DAYMONTHYEAR Date);        // Caculation total days
+void SHOW_DATE(DAYMONTHYEAR Date);                  // Show dates
 
 /*FUNCION CODE --------------------------------------------------------*/ 
 
 // 
 /*  This funcion is used to check number days of Month
-
     Month have 31 days : JANUARY, MARCH, MAY, JULY, AUGUST, OCTOBER, DECEMBER
     Month have 30 days : APRIL, JUNE, SEPTEMBER, NOVEMBER
     Month have 28 days : FEBRUARY
 */
-uint8_t NumdayofMonth(MONTH DayofMonth)
+uint8_t NUMDAYOFMONTH(MONTH DayofMonth)
 {
     switch(DayofMonth)
     {
@@ -88,7 +79,7 @@ uint8_t NumdayofMonth(MONTH DayofMonth)
 
 /*  This Funcion is used to caculation total days of all months and years */
 
-uint32_t Caculation_Date(DayMonthYear Date)
+uint32_t CACULATION_DATE(DAYMONTHYEAR Date)
 {
     uint32_t Total_Dates = 0;                                       // Total day
     uint8_t Check_LeapYear = 0;                                     // Check special Leap Year
@@ -135,9 +126,9 @@ uint32_t Caculation_Date(DayMonthYear Date)
 }
 
 // Funcion show date
-void Show_Date(DayMonthYear Date)
+void SHOW_DATE(DAYMONTHYEAR Date)
 {
-    uint32_t Total_Dates = Caculation_Date(Date);
+    uint32_t Total_Dates = CACULATION_DATE(Date);
     
     uint32_t check_date = Total_Dates%7;
     
@@ -148,14 +139,15 @@ void Show_Date(DayMonthYear Date)
 
 int main()
 {
-    DayMonthYear new_Date;
+    DAYMONTHYEAR New_Date;
     
-    new_Date.Day = 5;
-    new_Date.Month = 5;
-    new_Date.Year = 2022;
+    New_Date.Day = 5;
+    New_Date.Month = 5;
+    New_Date.Year = 2022;
     
-    Show_Date(new_Date);
+    SHOW_DATE(new_Date);
 
     return 0;
 }
+
 
