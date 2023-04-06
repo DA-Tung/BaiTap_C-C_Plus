@@ -3,22 +3,24 @@
 #include <stdint.h>
 
 /*INITIALIZE ----------------------------------------------------------*/
+
 char test_arr[] = "MOT NGOI NHA, HAI NGOI NHA, TONG CO HAI NHA, MOT CON DUONG";
 
-char conv_two_dim_arr[50][10];
+char TWO_DIM_ARR_CONV[50][10];
 
 /*INITIALIZE FUNCION --------------------------------------------------*/ 
-int len_arr(const char *arr);                                                               // read length of array
-int comp_arr(const char *arr1, const char *arr2);                                           // check if two arrays are equal or not
-void conv_to_two_dim_arr(const char one_dim_arr[],char two_dim_arr[][10], int *length_arr); // convert a array to two dimensional array
-void show_freq_appearance_word(char arr[][10], int length_arr);                             // show word in array
+
+int LENGTH_ARRAY(const char *arr);                                                               // read length of array
+int COMPARE_ARRAY(const char *arr1, const char *arr2);                                           // check if two arrays are equal or not
+void CONVERT_TO_TWO_DIM_ARR(const char one_dim_arr[],char two_dim_arr[][10], int *length_arr);   // convert a array to two dimensional array
+void SHOW_FREQ_APPEARANCE_WORD(char arr[][10], int length_arr);                                  // show word in array
 
 /*FUNCION CODE --------------------------------------------------------*/ 
 
 /*
     This funcion is used to read length of array
 */ 
-int len_arr(const char *arr)
+int LENGTH_ARRAY(const char *arr)
 {
     int length = 0;
     
@@ -33,19 +35,18 @@ int len_arr(const char *arr)
             length++;               // increase value of length
         }
     }
-    
     return length;
 } 
 
 /*
     This funcion is used to compare two arrays equal or not
 */ 
-int comp_arr(const char *arr1, const char *arr2)
+int COMPARE_ARRAY(const char *arr1, const char *arr2)
 {
     int check_arr = 1;
 
-    int length_1 = len_arr(arr1);   // read length of array 1
-    int length_2 = len_arr(arr2);   // read length of array 2
+    int length_1 = LENGTH_ARRAY(arr1);   // read length of array 1
+    int length_2 = LENGTH_ARRAY(arr2);   // read length of array 2
 
     if(length_1 != length_2)        // check value of length each array is equal or not 
     {
@@ -70,7 +71,7 @@ int comp_arr(const char *arr1, const char *arr2)
 /*
     This funcion is used to convert a array to two dimensional array
 */ 
-void conv_to_new_arr(const char one_dim_arr[],char two_dim_arr[][10], int *length_arr)
+void CONVERT_TO_TWO_DIM_ARR(const char one_dim_arr[],char two_dim_arr[][10], int *length_arr)
 {
     /*
         initialize local variables  
@@ -79,7 +80,7 @@ void conv_to_new_arr(const char one_dim_arr[],char two_dim_arr[][10], int *lengt
         
     int num_chr_two_dim_arr = 0;                    // save position of character in word of two dimensional array
 
-    int length_one_dim_arr = len_arr(one_dim_arr);  // length of one dimensional array 
+    int length_one_dim_arr = LENGTH_ARRAY(one_dim_arr);  // length of one dimensional array 
 
     int count_one_dim_arr = 0;                      // position of character of one dimensional array   
 
@@ -118,7 +119,7 @@ void conv_to_new_arr(const char one_dim_arr[],char two_dim_arr[][10], int *lengt
 /*
     This funcion is used to show frequent apprearance of word in one dimensional array
 */ 
-void show_freq_appearance_word(char arr[][10], int length_arr)
+void SHOW_FREQ_APPEARANCE_WORD(char arr[][10], int length_arr)
 {          
     /*
         create one array to marking position of word in one dimensional array
@@ -146,7 +147,7 @@ void show_freq_appearance_word(char arr[][10], int length_arr)
         {             
             if(check_word[count_1] == 1 && check_word[count_2] == 1)            // word is checked or not?
             {
-                int value_comp = comp_arr(arr[count_1],arr[count_2]);           // compare between two word
+                int value_comp = COMPARE_ARRAY(arr[count_1],arr[count_2]);      // compare between two word
                 if(value_comp == 1)             
                 {
                     freq_appear++;                                              // increase frequent appearance of word
@@ -171,9 +172,9 @@ int main()
 {
     int length_conv_arr;
 
-    conv_to_new_arr(test_arr,conv_two_dim_arr, &length_conv_arr); 
+    CONVERT_TO_TWO_DIM_ARR(test_arr,TWO_DIM_ARR_CONV, &length_conv_arr); 
 
-    show_freq_appearance_word(conv_two_dim_arr, length_conv_arr);
+    SHOW_FREQ_APPEARANCE_WORD(TWO_DIM_ARR_CONV, length_conv_arr);
 
    return 0;
 
