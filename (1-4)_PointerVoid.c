@@ -124,8 +124,6 @@ void show_calc(int count_calc)
 int main()
 {
     int calc_count;
-
-    //show_press_num(&calc_count);
     
     show_calc(calc_count);
 
