@@ -13,7 +13,7 @@ int COMP_STR(const char *str1, const char *str2);               // Compare two s
 void ADD_ARR(char *arr, char *add_arr);                         // Add a string to another string
 void SHOW_SORT_STR(char arr[][10], int len_arr);                // Display all string after sorting 
 void SELECT_PRESS_NUM(int *Count_Calc);                         // Select number to printf value of each typedata
-void SHOW_Calc(int Count_Calc);                                 // Display all calculation of all typedata
+void SHOW_CALC(int Count_Calc);                                 // Display all calculation of all typedata
 
 /*FUNCION CODE --------------------------------------------------------*/ 
 
@@ -200,7 +200,7 @@ void SELECT_PRESS_NUM(int *Count_Calc)
     * This funcion is used to show all Calculation type data at pointer void Calc
     * check typedata : use mark array Check_Calc to check type data in pointer void Calc
 */
-void SHOW_Calc(int Count_Calc)
+void SHOW_CALC(int Count_Calc)
 {
     SELECT_PRESS_NUM(&Count_Calc);
 
@@ -262,7 +262,7 @@ void SHOW_Calc(int Count_Calc)
 int main()
 {
     int Calc_Count;
-    SHOW_Calc(Calc_Count);
+    SHOW_CALC(Calc_Count);
     return 0;
 }
 
