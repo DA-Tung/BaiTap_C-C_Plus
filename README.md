@@ -1,6 +1,11 @@
 # bai_tap_c_interview_T3
 
 
+
+
+
+
+
 Sự khác biệt giữa Abstraction (Tính trừu tượng) và Encapsulation (Tính đóng gói)
 
 * Abstraction (Tính trừu tượng)  
