@@ -5,6 +5,10 @@ void *calc[10];
 
 int check_calc[10];
 
+void *calc[10];
+
+int check_calc[10];
+
 /*
     This funcion is used to convert a chr to string
     first character of string is chr
@@ -15,10 +19,6 @@ void Conv_char_to_String(char conv_char,char *conv_str)
     conv_str[0] = conv_char;
     conv_str[1] = '\0';
 }
-
-void *calc[10];
-
-int check_calc[10];
 
 /*
     This funcion is used to compare two string
