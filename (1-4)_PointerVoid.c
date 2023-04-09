@@ -18,10 +18,9 @@ void SHOW_Calc(int Count_Calc);                                 // Display all c
 /*FUNCION CODE --------------------------------------------------------*/ 
 
 /*
-    This funcion is used to convert a chr to string
-
-    first character of string is chr
-    sencond character of string is '\0'
+    * This funcion is used to convert a chr to string
+        first character of string is chr
+        sencond character of string is '\0'
 */
 void Conv_char_to_String(char conv_char,char *conv_str)
 {
@@ -30,9 +29,8 @@ void Conv_char_to_String(char conv_char,char *conv_str)
 }
 
 /*
-    This funcion is used to compare two string
-
-    return value :
+    * This funcion is used to compare two string
+    * return value :
         0 : equal
         1 : str1 < str2
         2 : str1 > str2
@@ -40,7 +38,6 @@ void Conv_char_to_String(char conv_char,char *conv_str)
 int COMP_STR(const char *str1, const char *str2)
 {
     int Pos_arr = 0;
-    
     int comp_flag = 0;
 
     while(1)
@@ -53,13 +50,11 @@ int COMP_STR(const char *str1, const char *str2)
                 break;
             }
         } 
-
         else if(str1[Pos_arr] < str2[Pos_arr])                      // compare two characters has together position
         {
             comp_flag = 1;                                          // return 1 if str1 < str2
             break;
         }
-
         else if(str1[Pos_arr] > str2[Pos_arr])                      // compare two characters has together position                     
         {
             comp_flag = 2;                                          // return 2 if str1 > str2
@@ -71,8 +66,7 @@ int COMP_STR(const char *str1, const char *str2)
 }
 
 /*
-    This funcion is used to add a string in another string
-
+    * This funcion is used to add a string in another string
 */
 void ADD_ARR(char *arr, char *add_arr)
 {
@@ -88,12 +82,11 @@ void ADD_ARR(char *arr, char *add_arr)
     {
         arr[len_arr + pos] = add_arr[pos];
     }
-
     arr[len_arr + len_add_arr] = '\0';                  
 }
 
 /*
-    This funcion is used to display all string with position of table characters
+    * This funcion is used to display all string with position of table characters
 */
 void SHOW_SORT_STR(char arr[][10], int len_arr)
 {
@@ -122,13 +115,11 @@ void SHOW_SORT_STR(char arr[][10], int len_arr)
                     }
                 }
             }
-            
-            mark_arr[Pos_Min_Str] = 0;                                              // Mark position minium word of array is 0
-            
+            mark_arr[Pos_Min_Str] = 0;                                              // Mark position minium word of array is 0            
             ADD_ARR(new_str,arr[Pos_Min_Str]);                                      // Add minium word of array in new array
         }
     }
-
+    
     for(int check = 0; check < len_arr; check++)                                    // Maxium word of array still mark is 1. Find and check position of it
     {                                                                                
         if(mark_arr[check] == 1)                                                    
@@ -136,41 +127,37 @@ void SHOW_SORT_STR(char arr[][10], int len_arr)
             ADD_ARR(new_str,arr[check]);                                            // printf maxium word of array in new array
         }
     }
-
+    
     printf("String of Calc : %s", new_str);                                         // Display new array
 }
 
 /*
-    This funcion is used to select and save type data 
-
-    Num 0 : exit funcion
-    Num 1 : type double
-    Num 2 : type Integer
-    Num 3 : type Character
-    Num 4 : type Word (String)
-
-    Count : Count value. The maximum number is 10 times
-    Press_Num : store the value corresponding to the data type 
+    * This funcion is used to select and save type data 
+    * Number :
+        Num 0 : exit funcion
+        Num 1 : type double
+        Num 2 : type Integer
+        Num 3 : type Character
+        Num 4 : type Word (String)
+    * Count : Count value. The maximum number is 10 times
+    * Press_Num : store the value corresponding to the data type 
 */
 void SELECT_PRESS_NUM(int *Count_Calc)
 {
     int Press_Num = 0;
     int Count = 0;
-
     int Count_TypeStr = 0;
     do
     {
         scanf("%d", &Press_Num);
-
         switch (Press_Num)
-        {
-               
+        {            
         case 1:
             double *Value_TypeDouble;               // save value in Calc with type data is double
             Value_TypeDouble = (double *)calloc(10, sizeof(double));
             scanf("%lf", Value_TypeDouble);       
             Calc[Count] = Value_TypeDouble;       
-            Check_Calc[Count] = Press_Num;          // mark array with type data double
+            Check_Calc[Count] = Press_Num;          // mark array is 1 with type data double
             break;
 
         case 2:
@@ -178,7 +165,7 @@ void SELECT_PRESS_NUM(int *Count_Calc)
             Value_TypeInt = (int *)calloc(10, sizeof(int));
             scanf("%d", Value_TypeInt);
             Calc[Count] = Value_TypeInt;
-            Check_Calc[Count] = Press_Num;          // mark array with type data integer       
+            Check_Calc[Count] = Press_Num;          // mark array is 2 with type data integer       
             //Count_typeInt++;
             break;
 
@@ -187,14 +174,14 @@ void SELECT_PRESS_NUM(int *Count_Calc)
             Value_TypeChr = (char *)calloc(10, sizeof(char));
             scanf(" %c", Value_TypeChr);
             Calc[Count] = Value_TypeChr;      
-            Check_Calc[Count] = Press_Num;          // mark array with type data character   
+            Check_Calc[Count] = Press_Num;          // mark array is 3 with type data character   
             break;    
 
         case 4:
-            char Value_TypeStr[10][10];                // save value in Calc with type data is string
+            char Value_TypeStr[10][10];             // save value in Calc with type data is string
             scanf(" %s", Value_TypeStr[Count_TypeStr]);
             Calc[Count] = Value_TypeStr[Count_TypeStr];
-            Check_Calc[Count] = Press_Num;          // mark array with type data string          
+            Check_Calc[Count] = Press_Num;          // mark array is 4 with type data string          
             Count_TypeStr++;
             break;        
 
@@ -202,7 +189,6 @@ void SELECT_PRESS_NUM(int *Count_Calc)
         default:
             break;
         }
-
         Count++;                                    /* increase value of Count                          */
         if(Count == 10) Press_Num = 0;              /* and compare with 10 (maximun 10 times)           */ 
     } while (Press_Num);  
@@ -211,44 +197,34 @@ void SELECT_PRESS_NUM(int *Count_Calc)
 }
 
 /*
-    This funcion is used to show all Calculation type data at pointer void Calc
-
-    use mark array Check_Calc to check type data in pointer void Calc
+    * This funcion is used to show all Calculation type data at pointer void Calc
+    * check typedata : use mark array Check_Calc to check type data in pointer void Calc
 */
 void SHOW_Calc(int Count_Calc)
 {
     SELECT_PRESS_NUM(&Count_Calc);
 
     int sum_Calc_int = 0;
-
     double sum_Calc_double = 0;
-
     double show_sum_Calc = 0;
-
-    char chr_Calc[20] = "";
+    char chr_Calc[10] = "";
     int Count_chr = 0;
-
     char str_Calc[10][10];
     int Count_str = 0;
-
-    //char Show_Calc_Str[110] = "";
-
+    
     /*
         loop for to check type data and save in variable
     */
-
     for(int Count = 0; Count < Count_Calc; Count++)
     {
         if(Check_Calc[Count] == 1)
         {
             sum_Calc_double += *((double *)*(Calc + Count));        // assign value type double                                                
         }
-
         else if(Check_Calc[Count] == 2)
         {
             sum_Calc_int += *((int *)*(Calc + Count));              // assign value type integer
         }
-
         else if(Check_Calc[Count] == 3)
         {
             chr_Calc[Count_chr] = *((char *)*(Calc + Count));       // assign value type character
@@ -256,7 +232,6 @@ void SHOW_Calc(int Count_Calc)
             Count_chr++;
             Count_str++;
         }
-
         else if(Check_Calc[Count] == 4)
         {           
             int length_Calc = strlen((char *)Calc[Count]);
@@ -270,7 +245,6 @@ void SHOW_Calc(int Count_Calc)
     }
 
     printf("\n");
-
     // Print sum of all value integer and double
     show_sum_Calc = sum_Calc_double + (double)sum_Calc_int;
     printf("Sum numbers of Calc : %lf\n",show_sum_Calc);
@@ -280,9 +254,6 @@ void SHOW_Calc(int Count_Calc)
     {
         printf("string : %s\n",str_Calc[Count_1]);
     }
-
-    //printf("%d\n", Count_str);
-
     SHOW_SORT_STR(str_Calc,Count_str);
 }
 
@@ -291,9 +262,7 @@ void SHOW_Calc(int Count_Calc)
 int main()
 {
     int Calc_Count;
-    
     SHOW_Calc(Calc_Count);
-
     return 0;
 }
 
