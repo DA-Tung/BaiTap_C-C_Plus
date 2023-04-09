@@ -5,10 +5,6 @@ void *calc[10];
 
 int check_calc[10];
 
-void *calc[10];
-
-int check_calc[10];
-
 /*
     This funcion is used to convert a chr to string
     first character of string is chr
