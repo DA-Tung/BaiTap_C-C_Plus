@@ -368,9 +368,28 @@ void Manager::ListFoods()
 /*
     Class Employee-------------------------------------------------------
 */
+
+/*  Create struct about food and quanlity*/
+typedef struct{
+    Food Food;
+    uint8_t qty;
+}QtyFoods;
+
+/*  Class Employee  */
 class Employee{
     private :
-    
+        typedef struct{
+            vector<QtyFoods> qty_foods;
+            Table table;
+        }InformTable;
+        
+    public :
+        Employee(vector<Food> DatabaseFood, vector<Table> DatabaseTable);
+
+        void OrderFoods();
+        void ChangeFoods();
+        void DeleteFoods();
+        void Payment();
 };
 
 /*
