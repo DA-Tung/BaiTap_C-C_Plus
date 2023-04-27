@@ -16,24 +16,31 @@ class Food{
         uint8_t id_Food;
         char NameFood[20];
         uint32_t PriceFood;
+        uint8_t Qty;
+
     public :
-        Food(char NameFood[] = "\0", uint32_t PriceFood = 0);
+        Food(char NameFood[] = "\0", uint32_t PriceFood = 0, uint8_t Qty = 0);
         void SetNameFood(char NameFood[])     { strcpy(this->NameFood,NameFood); }
         char *GetNameFood()                   { return this->NameFood;           }
         
         void SetPriceFood(uint32_t PriceFood) { this->PriceFood = PriceFood; }
         uint32_t GetPriceFood()               { return this->PriceFood;      }
 
+        void SetQtyFood(uint8_t Qty)          { this->Qty = Qty;    }
+        uint8_t GetQtyFood()                  { return this->Qty;   }
+
         uint8_t GetIDFood()                   { return this->id_Food; }
 };
 
 /*  Funcion : Get inform Foods  */
-Food::Food(char NameFood[], uint32_t PriceFood)
+Food::Food(char NameFood[], uint32_t PriceFood, uint8_t Qty)
 {
+    // Number of food in list
     static uint8_t id = 100;
     this->id_Food = id;
     id++;
 
+    this->Qty = Qty;
     strcpy(this->NameFood, NameFood);
     this->PriceFood = PriceFood;
 }
@@ -68,6 +75,7 @@ class Manager{
         uint8_t GetQtyTable();
 
         vector<Food> GetListFood();
+        vector<Table> GetStatusTable();
 };
 
 /*  Manager */
@@ -82,15 +90,21 @@ vector<Food> Manager::GetListFood()
     return Manager::DatabaseFood;
 }
 
+/*  Get Status Table    */
+vector<Table> Manager::GetStatusTable()
+{
+    return Manager::DatabaseTable;
+}
+
 /*  Set quanlity table  */
 void Manager::SetQtyTable()
 {
     int qty_table;
 
     printf("Enter quanlity table of Restaurant : ");
-    scanf("%d", qty_table);
+    scanf("%d", &qty_table);
 
-    for(int pos = 0; pos < qty_table; pos++)
+    for(int pos = 1; pos <= qty_table; pos++)
     {
         Table table;
         table.PositionTable = pos;
@@ -369,28 +383,189 @@ void Manager::ListFoods()
     Class Employee-------------------------------------------------------
 */
 
-/*  Create struct about food and quanlity*/
-typedef struct{
-    Food Food;
-    uint8_t qty;
-}QtyFoods;
-
 /*  Class Employee  */
 class Employee{
     private :
-        typedef struct{
-            vector<QtyFoods> qty_foods;
-            Table table;
-        }InformTable;
-        
-    public :
-        Employee(vector<Food> DatabaseFood, vector<Table> DatabaseTable);
+        vector<Table> Status_Table;
 
+        typedef struct{
+            vector<Food> ListDataFood;
+            Table TABLE;
+        }Order;
+        
+        vector<Order> StatusOrderFood;
+    public :
+        Employee();
+
+        void GetDataManagerFood(Manager manager);
+        uint8_t GetQtyTable();
+        void RunProgramOrder();
         void OrderFoods();
         void ChangeFoods();
-        void DeleteFoods();
+        void CancelFoods();
+        void BookTable();
+        void StatusOrderTable();
         void Payment();
 };
+
+/*  */
+Employee::Employee()
+{
+}
+
+/*  Get data for list inform food in the menu */
+void Employee::GetDataManagerFood(Manager manager)
+{
+    // Get inform all table
+    Status_Table.clear();
+    for(auto new_list : manager.GetStatusTable())
+    {
+        Status_Table.push_back(new_list);
+    }
+
+    // Get inform Food in menu and save status of all table
+    for(int num = 1; num <= Status_Table.size(); num++)
+    {
+        Order New_Inform;
+
+        // Get status table
+        New_Inform.TABLE.PositionTable = (Status_Table.at(num)).PositionTable;
+        New_Inform.TABLE.StatusTable = (Status_Table.at(num)).StatusTable;
+
+        // Get inform Food 
+        (StatusOrderFood.at(num)).ListDataFood.clear();
+        for(auto new_list : manager.GetListFood())
+        {
+            New_Inform.ListDataFood.push_back(new_list);
+        }
+
+        // Push all inform in StatusOrderFood
+        StatusOrderFood.push_back(New_Inform);
+    }
+}
+
+uint8_t Employee::GetQtyTable()
+{
+    return Status_Table.size();
+}
+
+/*  */
+void Employee::OrderFoods()
+{
+    char Food[20];
+    uint8_t Qty = 0;
+    uint8_t Pos;
+    bool check_food = false;
+
+    // Import position table need to order
+    printf("Table order : ");
+    scanf("%u", &Pos);
+
+    if(Pos > 0 && Pos <= GetQtyTable())
+    {
+        // Enter the Food's Name you want to order
+        printf("- Enter the Food you want to order : ");
+        scanf("%s", &Food);
+
+        // Get quantity Foods in the Menu
+        int QtyFood = (StatusOrderFood.at(Pos)).ListDataFood.size();
+
+        // Check if Food exsit or not in the List
+        for(int Num_Food = 0; Num_Food < QtyFood; Num_Food++)
+        {
+            if(strcpy((StatusOrderFood.at(Pos)).ListDataFood.at(Num_Food).GetNameFood(), Food) == 0)
+            {
+                // Food is exsit in the List
+                check_food = true;
+
+                // Enter the Food Order quantity
+                printf("\t+ Enter the Food Order quantity : ");
+                scanf("%u",&Qty);
+
+                // Add quantity Food
+                Qty += (StatusOrderFood.at(Pos)).ListDataFood.at(Num_Food).GetQtyFood();
+
+                // Set new quantity Food
+                (StatusOrderFood.at(Pos)).ListDataFood.at(Num_Food).SetQtyFood(Qty);
+
+                // Show inform order
+                printf("- The Food [%s] at number table [%u] have quality : %u\n", Food,Pos,Qty);
+            }
+
+            // Break loop for
+            Num_Food = QtyFood;
+        }
+        // Print if food does not exsit in the List
+        if(check_food == false)
+        {
+            printf("- The Food [%s] does not exist in the Menu\n",Food);
+        }
+    }
+    // Printf if number table does not exist
+    else
+    {
+        printf("The number table [%u] does not exist\n", Pos);
+    }
+}
+
+/*  Change inform food  */
+void Employee::ChangeFoods()
+{
+    char Food[20];
+    uint8_t Qty;
+    uint8_t Pos;
+
+
+    
+}
+
+/*  Cancel Food */
+void Employee::CancelFoods()
+{
+    char Food[20];
+    uint8_t Qty;
+    uint8_t Pos;
+
+    printf("- Table need to cancel the food : ");
+    scanf("%d", &Pos);  
+}
+
+/*  Run main program    */
+void RunMainProgram()
+{
+    int select;
+    Manager manager;
+    Employee employee;
+
+    do
+    {
+        printf("Program inform food and manager order of restaurant\n");
+        printf("------------------------------------\n");
+        printf("\t+ Select [0] if you want to exit program\n");
+        printf("\t+ Select [1] if you want to check inform Food in menu\n");
+        printf("\t+ Select [2] if you book table or order food\n");
+        scanf("%d",&select);
+        printf("- Select funcion [%d] : ",select);
+
+        switch (select)
+        {
+        case 1:
+            printf(" Inform of Food in menu\n");
+            manager.RunProgramManager();
+            employee.GetDataManagerFood(manager);
+            break;
+
+        case 2:
+            printf(" Book Table or Order Food\n");
+            employee.RunProgramOrder();
+            break;   
+
+        default:
+            printf("Exit Program\n");
+            break;
+        }
+    } while (select);
+}
 
 /*
     Funcion Main
@@ -399,3 +574,5 @@ int main()
 {
     return 0;
 }
+
+
