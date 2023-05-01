@@ -412,7 +412,6 @@ class Employee{
         void CancelFoods();
         void ShowOrderFood();
         void Payment();
-        void ClearTable(uint8_t pos_table);
 };
 
 /*  Employee    */
@@ -709,12 +708,6 @@ void Employee::ShowOrderFood()
         printf("\t-> The number table [%u] does not exist, can not show list\n", Pos);
     }
     printf("\n");    
-}
-
-/*  Clear Table */
-void Employee::ClearTable(uint8_t pos_table)
-{
-
 }
 
 /*  Payment for order food  */
