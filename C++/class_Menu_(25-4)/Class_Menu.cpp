@@ -81,7 +81,8 @@ class Manager{
 /*  Manager */
 Manager::Manager()
 {
-
+    Manager::GetListFood();
+    Manager::GetStatusTable();
 }
 
 /*  Get list Food*/
@@ -124,11 +125,12 @@ void Manager::RunProgramManager()
 {
     int select = 0;
     printf("\n");
-    printf("*** This is a Food Management Program\n");
+    printf("*** This is a Food Management Program ***\n");
+    printf("------------------------------------\n");
     do
     {
-        printf("------------------------------------\n");
-        printf("Information of all funcions :\n");
+        printf("\n");
+        printf("* Information of all funcions :\n");
         printf("\t[0] Exit program\n");
         printf("\t[1] Add Food\n");
         printf("\t[2] Fix Food\n");
@@ -184,7 +186,7 @@ void Manager::AddFood()
 {
     char name[20];
     long long price;
-    uint8_t qty;
+    uint8_t qty = 0;
 
     // Print new food
     printf("* Add new Food\n");
@@ -194,8 +196,8 @@ void Manager::AddFood()
     scanf(" %s", &name);
 
     // Enter quantity of new food
-    printf("\t+ Enter quantity of new Food : ");
-    scanf("%u", &qty);
+    // printf("\t+ Enter quantity of new Food : ");
+    // scanf("%u", &qty);
 
     // Enter price of new food
     printf("\t+ Enter price of new Food : ");
@@ -207,7 +209,7 @@ void Manager::AddFood()
     // Add new food in database
     DatabaseFood.push_back(new_food);
 
-    printf("Select [1] if you want to continue add new Food\n"); 
+    printf("!! Select [1] if you want to continue add new Food\n"); 
     printf("\n");   
 }
 
@@ -222,9 +224,9 @@ void Manager::FixFood()
     int select;
 
     /* Enter ID Food need to fix */
-    printf("* Enter ID Food need fix : "); 
+    printf("* Fix Food\n");
+    printf("\t+ Enter ID Food need fix : "); 
     scanf("%u",&ID_Food);
-    printf("\n");
     /* Find ID Food in list */
     for(int num_ID = 0; num_ID < DatabaseFood.size(); num_ID++)
     {
@@ -237,26 +239,26 @@ void Manager::FixFood()
             // Implement fix Food
             do
             {
-                printf("+ Fix inform for Food\n");
-                printf("\t[0] End Fix\n");
-                printf("\t[1] Fix name Food\n");
-                printf("\t[2] Fix price Food\n");
+                printf("\t+ Fix inform for Food\n");
+                printf("\t\t[0] End Fix\n");
+                printf("\t\t[1] Fix name Food\n");
+                printf("\t\t[2] Fix price Food\n");
                 printf("------------------------------------\n");
                 // Select inform need to fix
                 scanf("%d", &select);
-                printf("\tFix inform [%d] : ",select);
+                printf("\tSelect funcion [%d] to fix inform : ",select);
 
                 // Sellect inform
                 switch (select)
                 {
                 case 1 :
-                    printf("Name of Food\n");
+                    printf("Food's Name\n");
                     scanf("%s",&name);
                     (DatabaseFood.at(ID_Food)).SetNameFood(name);
                     break;
 
                 case 2 :
-                    printf("Price of Food\n");
+                    printf("Food's Price\n");
                     scanf("%ld",&price);
                     (DatabaseFood.at(ID_Food)).SetPriceFood(price);
                     break;
@@ -273,17 +275,17 @@ void Manager::FixFood()
             // Assign num_ID to illegal value of condition loop for
             num_ID = DatabaseFood.size();
 
-            printf("\tID Food [%d] is fixed\n");
+            printf("\t-> ID Food [%d] is fixed\n");
         }
     }
 
     // ID is not exist
     if(check_ID == false)
     {
-        printf("\tID Food [%d] is NOT exist, you can't fix\n");
+        printf("\t-> ID Food [%d] is NOT exist, you can't fix\n");
     }
 
-    printf("Select [2] if you want to continue fix Food\n");
+    printf("!! Select [2] if you want to continue fix Food\n");
     printf("\n");
 }
 
@@ -294,9 +296,9 @@ void Manager::DeleteFood()
     bool check_ID = false;
 
     /* Enter ID Food need to delete */
-    printf("* Enter ID Food need to delete : "); 
+    printf("* Delete Food\n");
+    printf("\t+ Enter ID Food need to delete : "); 
     scanf("%u",&ID_Food);
-    printf("\n");
     /* Find ID Food in menu */
     for(int num_ID = 0; num_ID < DatabaseFood.size(); num_ID++)
     {
@@ -317,14 +319,14 @@ void Manager::DeleteFood()
     // ID number is exist or not
     if(check_ID == false)
     {
-        printf("\tID Food [%d] is NOT exist, you can't delete Food\n", ID_Food);
+        printf("\t-> ID Food [%d] is NOT exist, you can't delete Food\n", ID_Food);
     }
     else if(check_ID == true)
     {
-        printf("\tID Food [%d] is deleted in the menu\n", ID_Food);
+        printf("\t-> ID Food [%d] is deleted in the menu\n", ID_Food);
     }    
 
-    printf("Select [3] if you want to continue delete Food in menu\n");
+    printf("!! Select [3] if you want to continue delete Food in menu\n");
     printf("\n");
 }
 
@@ -335,16 +337,15 @@ void Manager::FindFood()
     bool check_name = false;
 
     /* Enter name Food need to find */
-    printf("* Enter name Food need to find in the menu : "); 
+    printf("* Find Food in Menu\n");
+    printf("\t+ Enter name Food need to find in the menu : "); 
     scanf("%s",&name);
-    printf("\n");
-
     // Find name of Food in the menu
     for(int pos = 0; pos < DatabaseFood.size(); pos++)
     {
         if(strcmp((DatabaseFood.at(pos)).GetNameFood(), name) == 0)
         {
-            printf("\tFood's name is [%s] exist in the menu\n",name);
+            printf("\t-> Food's name is [%s] exist in the menu\n",name);
 
             // Assign true to verify name of student is exist
             check_name = true;            
@@ -354,10 +355,10 @@ void Manager::FindFood()
     // Food's name is NOT exist in the menu
     if(check_name == false)
     {
-        printf("\tThe Food's [%s] is NOT exist in list\n",name);       
+        printf("\t-> The Food's [%s] is NOT exist in list\n",name);       
     }
 
-    printf("Select [4] if you want to continue to find other Food's name\n");
+    printf("!! Select [4] if you want to continue to find other Food's name\n");
     printf("\n");
 }
 
@@ -369,18 +370,17 @@ void Manager::ListFoods()
     uint8_t ID_Food;
     int count = 1;
 
-    printf("List Food in the menu\n");
+    printf("* List Food in the menu\n");
     printf("\n");
     // Print inform of all Foods in the menu
+    printf("\tNo\t| ID\t| Food Name\t| Price\t\n");
     for(Food food : DatabaseFood)
     {
         ID_Food = food.GetIDFood();
         strcpy(name, food.GetNameFood());
         price = food.GetPriceFood();
-
         // Print inform of each Food in the menu
-        printf("\tFood number [%d] : \n",count);
-        printf("\tName : %s |\tPrice : %ld VND | \tID_Food : %u\n",name,price,ID_Food);
+        printf("\t%d\t| %u\t| %s\t \t| %ld\t\n",count,ID_Food,name,price);
         count++;
     }
 }
@@ -389,29 +389,30 @@ void Manager::ListFoods()
     Class Employee-------------------------------------------------------
 */
 
+typedef struct{
+    vector<Food> ListDataFood;
+    Table TABLE;
+}Order;
+
 /*  Class Employee  */
 class Employee{
     private :
         vector<Table> DataTable;
-
-        typedef struct{
-            vector<Food> ListDataFood;
-            Table TABLE;
-        }Order;
-        
         vector<Order> ListOrderFood;
     public :
         Employee();
 
-        void GetDataManagerFood(Manager manager);
+        void GetDataManagerFood(Manager *manager);
         uint8_t GetQtyTable();
-
+        
         void RunProgramOrder();
+        void ShowStatusTable();
 
         void OrderFoods();
         void CancelFoods();
         void ShowOrderFood();
         void Payment();
+        void ClearTable(uint8_t pos_table);
 };
 
 /*  Employee    */
@@ -424,7 +425,7 @@ void Employee::RunProgramOrder()
 {
     int select = 0;
     printf("\n");
-    printf("* This is a Food Management Program\n");
+    printf("*** This is a Food Management Program ***\n");
     printf("------------------------------------\n");
     do
     {
@@ -471,17 +472,17 @@ void Employee::RunProgramOrder()
 }
 
 /*  Get data for list inform food in the menu */
-void Employee::GetDataManagerFood(Manager manager)
+void Employee::GetDataManagerFood(Manager *manager)
 {
     // Get inform all table
     DataTable.clear();
-    for(auto new_list : manager.GetStatusTable())
+    for(auto new_list : manager->GetStatusTable())
     {
         DataTable.push_back(new_list);
     }
 
     // Get inform Food in menu and save status of all table
-    for(int num = 1; num <= DataTable.size(); num++)
+    for(int num = 0; num < DataTable.size(); num++)
     {
         Order New_Inform;
 
@@ -490,8 +491,8 @@ void Employee::GetDataManagerFood(Manager manager)
         New_Inform.TABLE.StatusTable = (DataTable.at(num)).StatusTable;
 
         // Get inform Food 
-        (ListOrderFood.at(num)).ListDataFood.clear();
-        for(auto new_list : manager.GetListFood())
+        //(ListOrderFood.at(num)).ListDataFood.clear();
+        for(auto new_list : manager->GetListFood())
         {
             New_Inform.ListDataFood.push_back(new_list);
         }
@@ -507,6 +508,29 @@ uint8_t Employee::GetQtyTable()
     return DataTable.size();
 }
 
+/*  Show status Table   */
+void Employee::ShowStatusTable()
+{
+    printf(" Table  \t |");
+    for(int pos_table = 1; pos_table <= Employee::GetQtyTable(); pos_table++)
+    {
+        printf(" %d\t| ",pos_table);
+    }
+    printf("\n Status \t |");
+    for(int pos_table = 0; pos_table < Employee::GetQtyTable(); pos_table++)
+    {
+        if((ListOrderFood.at(pos_table)).TABLE.StatusTable == true)
+        {
+            printf(" x\t| ");
+        }
+        else
+        {
+            printf("  \t| ");
+        }
+    }
+    printf("\n");
+}
+
 /* Order Food */
 void Employee::OrderFoods()
 {
@@ -515,42 +539,46 @@ void Employee::OrderFoods()
     uint8_t Pos;
     bool check_food = false;
 
+    //Show status table
+    Employee::ShowStatusTable();
+
     // Import position table need to order
-    printf("Table order : ");
+    printf("* Order Food\n");
+    printf("\t+ Table order : ");
     scanf("%u", &Pos);
 
     // Check position table of restaurant
     if(Pos > 0 && Pos <= GetQtyTable())
     {
-        (ListOrderFood.at(Pos)).TABLE.StatusTable = true;
+        (ListOrderFood.at(Pos-1)).TABLE.StatusTable = true;
 
         // Enter the Food's Name you want to order
-        printf("\tEnter the Food you want to order : ");
+        printf("\t+ Enter the Food you want to order : ");
         scanf("%s", &Food);
 
         // Get quantity Foods in the Menu
-        int QtyFood = (ListOrderFood.at(Pos)).ListDataFood.size();
+        int QtyFood = (ListOrderFood.at(Pos-1)).ListDataFood.size();
 
         // Check if Food exsit or not in the List
         for(int Num_Food = 0; Num_Food < QtyFood; Num_Food++)
         {
-            if(strcpy((ListOrderFood.at(Pos)).ListDataFood.at(Num_Food).GetNameFood(), Food) == 0)
+            if(strcmp((ListOrderFood.at(Pos-1)).ListDataFood.at(Num_Food).GetNameFood(), Food) == 0)
             {
                 // Food is exsit in the List
                 check_food = true;
 
                 // Enter the Food Order quantity
-                printf("\tEnter the Food Order quantity : ");
+                printf("\t+ Enter the Food Order quantity : ");
                 scanf("%u",&Qty);
 
                 // Add quantity Food
-                Qty += (ListOrderFood.at(Pos)).ListDataFood.at(Num_Food).GetQtyFood();
+                Qty += (ListOrderFood.at(Pos-1)).ListDataFood.at(Num_Food).GetQtyFood();
 
                 // Set new quantity Food
-                (ListOrderFood.at(Pos)).ListDataFood.at(Num_Food).SetQtyFood(Qty);
+                (ListOrderFood.at(Pos-1)).ListDataFood.at(Num_Food).SetQtyFood(Qty);
 
                 // Show inform order
-                printf("The Food [%s] at number table [%u] have quality : %u\n", Food,Pos,Qty);
+                printf("\t-> The Food [%s] at number table [%u] have quality : %u\n", Food,Pos,Qty);
 
                 // Break loop for
                 Num_Food = QtyFood;
@@ -559,14 +587,15 @@ void Employee::OrderFoods()
         // Print if food does not exsit in the List
         if(check_food == false)
         {
-            printf("The Food [%s] does not exist in the Menu\n",Food);
+            printf("\t-> The Food [%s] does not exist in the Menu\n",Food);
         }
     }
     // Printf if number table does not exist
     else
     {
-        printf("The number table [%u] does not exist\n", Pos);
+        printf("\t-> The number table [%u] does not exist\n", Pos);
     }
+    printf("\n");
 }
 
 /*  Cancel order food  */
@@ -577,85 +606,99 @@ void Employee::CancelFoods()
     uint8_t Pos;
     bool check_food = false;
 
+    //Show status table
+    Employee::ShowStatusTable();
+
     // Import position table need to order
-    printf("Table order : ");
+    printf("* Cancel Food\n");
+    printf("\t+ Table order : ");
     scanf("%u", &Pos);    
 
     // Check position table of restaurant
     if(Pos > 0 && Pos <= GetQtyTable())
     {
         // Check status table before change food
-        if((ListOrderFood.at(Pos)).TABLE.StatusTable == false)
+        if((ListOrderFood.at(Pos-1)).TABLE.StatusTable == false)
         {
-            printf("There is no Food on this postion table\n");
+            printf("\t-> There is no Food on this postion table\n");
         }
         else
         {
             // Enter the Food's Name you want to order
-            printf("\tEnter the Food you want to cancel : ");
+            printf("\t+ Enter the Food you want to cancel : ");
             scanf("%s", &Food);
 
             // Get quantity Foods in the Menu
-            int QtyFood = (ListOrderFood.at(Pos)).ListDataFood.size();
+            int QtyFood = (ListOrderFood.at(Pos-1)).ListDataFood.size();
 
             // Check if Food exsit or not in the List
             for(int Num_Food = 0; Num_Food < QtyFood; Num_Food++)
             {
-                if(strcpy((ListOrderFood.at(Pos)).ListDataFood.at(Num_Food).GetNameFood(), Food) == 0)
+                if(strcmp((ListOrderFood.at(Pos-1)).ListDataFood.at(Num_Food).GetNameFood(), Food) == 0)
                 {     
-                    // Food is exsit in the List
-                    check_food = true;
+                    if((ListOrderFood.at(Pos-1)).ListDataFood.at(Num_Food).GetQtyFood() > 0)
+                    {
+                        // Food is exsit in the List
+                        check_food = true;
 
-                    Qty = 0;
-                    // Set quantity Food is 0, delete Food
-                    (ListOrderFood.at(Pos)).ListDataFood.at(Num_Food).SetQtyFood(Qty);       
+                        Qty = 0;
+                        // Set quantity Food is 0, delete Food
+                        (ListOrderFood.at(Pos-1)).ListDataFood.at(Num_Food).SetQtyFood(Qty);       
 
-                    // Break loop for
-                    Num_Food = QtyFood;             
+                        // Break loop for
+                        Num_Food = QtyFood; 
+                    }            
                 }
             }
             // Print if food does not exsit in the List
             if(check_food == false)
             {
-                printf("The Food [%s] does not exist therefore can not cancel Food\n",Food);
+                printf("\t-> The Food [%s] does not exist therefore or before order, can not cancel Food\n",Food);
             }
         }
     }
     // Printf if number table does not exist
     else
     {
-        printf("The number table [%u] does not exist, can not implement\n", Pos);
+        printf("\t-> The number table [%u] does not exist, can not implement\n", Pos);
     }
+    printf("\n");    
 }
 
 // Show list foods are ordered
 void Employee::ShowOrderFood()
 {
     uint8_t Pos;
+    int count = 1;
+    //Show status table
+    Employee::ShowStatusTable();
 
     // Import position table need to order
-    printf("Table order : ");
+    printf("* Show Order Food\n");
+    printf("\t+ Table order : ");
     scanf("%u", &Pos);    
 
     // Check position table of restaurant
     if(Pos > 0 && Pos <= GetQtyTable())
     {
         // Check status table before change food
-        if((ListOrderFood.at(Pos)).TABLE.StatusTable == false)
+        if((ListOrderFood.at(Pos-1)).TABLE.StatusTable == false)
         {
-            printf("There is no Food on this postion table\n");
+            printf("\t-> There is no Food on this postion table\n");
         }
         else
         {    
-            printf("The list Foods are ordered : \n");
+            printf("\t+ The list Foods are ordered : \n");
+            printf("\tNo\t | Name_Food\t | Qty\t\n");
             // Print list food 
-            for(auto item : (ListOrderFood.at(Pos)).ListDataFood)
+            for(auto item : (ListOrderFood.at(Pos-1)).ListDataFood)
             {
                 // Check quantity Food > 0, the Food is odered
                 if(item.GetQtyFood() > 0)
                 {
                     // Show name and quantity Food
-                    printf("\tFood : %s |\t Qty : %u\n",item.GetNameFood(),item.GetQtyFood());
+                    printf("\t%d\t | %s\t\t | %u\t\n",count,item.GetNameFood(),item.GetQtyFood());
+                    count++;
                 }
             }
         }
@@ -663,49 +706,74 @@ void Employee::ShowOrderFood()
     // Printf if number table does not exist
     else
     {
-        printf("The number table [%u] does not exist, can not show list\n", Pos);
+        printf("\t-> The number table [%u] does not exist, can not show list\n", Pos);
     }
+    printf("\n");    
+}
+
+/*  Clear Table */
+void Employee::ClearTable(uint8_t pos_table)
+{
+
 }
 
 /*  Payment for order food  */
 void Employee::Payment()
 {
     uint8_t Pos;
+    int count = 1;
+    long long price_each_food = 0;
     long long sum_price = 0;
+
+    //Show status table
+    Employee::ShowStatusTable();
+
     // Import position table need to order
-    printf("Table order : ");
+    printf("* Payment\n");
+    printf("\t+ Table order : ");
     scanf("%u", &Pos);    
 
     // Check position table of restaurant
     if(Pos > 0 && Pos <= GetQtyTable())
     {
         // Check status table before change food
-        if((ListOrderFood.at(Pos)).TABLE.StatusTable == false)
+        if((ListOrderFood.at(Pos-1)).TABLE.StatusTable == false)
         {
-            printf("There is no Food on this postion table\n");
+            printf("\t-> There is no Food on this postion table\n");
         }
         else
         {    
+            printf("\t No\t | NameFood\t | Qty\t | Price\t\n");
             // Print list food 
-            for(auto item : (ListOrderFood.at(Pos)).ListDataFood)
+            for(auto item : (ListOrderFood.at(Pos-1)).ListDataFood)
             {
                 // Check quantity Food > 0, the Food is odered
                 if(item.GetQtyFood() > 0)
                 {
                     // Calculation total price for all Food
-                    sum_price += (long long)item.GetQtyFood()*(long long)item.GetPriceFood();
+                    price_each_food = (long long)item.GetQtyFood()*(long long)item.GetPriceFood();
+                    printf("\t %d\t | %s\t\t | %u\t | %ld VND\t\n",count,item.GetNameFood(),item.GetQtyFood(),price_each_food);
+                    sum_price += price_each_food;
+                    count++;
+
+                    // Clear qty food after payment
+                    item.SetQtyFood(0);
                 }
             }
 
             // Show total price for all food
-            printf("Total price for all Foods : %ld\n",sum_price);
+            printf("\t-> Total price for bill : %ld VND\n",sum_price);
+        
+            // Clear status table after payment
+            (ListOrderFood.at(Pos-1)).TABLE.StatusTable = false;
         }
     }
     // Printf if number table does not exist
     else
     {
-        printf("The number table [%u] does not exist, can not show list\n", Pos);
-    }    
+        printf("\t-> The number table [%u] does not exist, can not show list\n", Pos);
+    }
+    printf("\n");        
 }
 
 /*  Run main program    */
@@ -718,7 +786,7 @@ void RunMainProgram()
     do
     {
         // Show inform for Run main program
-        printf("Program inform food and manager order of restaurant\n");
+        printf("*** Program inform food and manager order of restaurant ***\n");
         printf("------------------------------------\n");
         printf("\t+ Select [0] if you want to exit program\n");
         printf("\t+ Select [1] if you want to check inform Food in menu\n");
@@ -731,14 +799,15 @@ void RunMainProgram()
         {
         // Import inform Food or check Food
         case 1:
-            printf(" Inform of Food in menu\n");
+            printf("Inform of Food in menu\n");
             manager.RunProgramManager();
-            employee.GetDataManagerFood(manager);
+            printf("\n");
+            employee.GetDataManagerFood(&manager);
             break;
 
         // Implement all funcion for a restaurant
         case 2:
-            printf(" Book Table or Order Food\n");
+            printf("Book Table or Order Food\n");
             employee.RunProgramOrder();
             break;   
 
