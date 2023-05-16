@@ -1,0 +1,72 @@
+Dependencies for Project 'spi_soft_slave', Target 'Program': (DO NOT MODIFY !)
+CompilerVersion: 5060750::V5.06 update 6 (build 750)::.\ARMCC
+F (.\main.h)(0x645F4DCF)()
+F (.\main.c)(0x6462FB89)(--c99 -c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork --split_sections-I.\RTE\_Program-I"D:\Keil C V5 - ARM\keil c\keil c v5.31\ARM\CMSIS\5.7.0\CMSIS\Core\Include"-I"D:\Keil C V5 - ARM\keil c\keil c v5.31\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F411xE -D_RTE_-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+I (D:\Keil C V5 - ARM\keil c\keil c v5.31\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x5F6ADFE6)
+I (D:\Keil C V5 - ARM\keil c\keil c v5.31\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f411xe.h)(0x5F6ADFE6)
+I (D:\Keil C V5 - ARM\keil c\keil c v5.31\ARM\CMSIS\5.7.0\CMSIS\Core\Include\core_cm4.h)(0x5E8EDF32)
+I (D:\Keil C V5 - ARM\keil c\keil c v5.31\ARM\ARMCC\include\stdint.h)(0x5EC7840C)
+I (D:\Keil C V5 - ARM\keil c\keil c v5.31\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_version.h)(0x5E8EDF32)
+I (D:\Keil C V5 - ARM\keil c\keil c v5.31\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_compiler.h)(0x5E8314D2)
+I (D:\Keil C V5 - ARM\keil c\keil c v5.31\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_armcc.h)(0x5E8EDF32)
+I (D:\Keil C V5 - ARM\keil c\keil c v5.31\ARM\CMSIS\5.7.0\CMSIS\Core\Include\mpu_armv7.h)(0x5E8EDF32)
+I (D:\Keil C V5 - ARM\keil c\keil c v5.31\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h)(0x5F6ADFE6)
+I (D:\Keil C V5 - ARM\keil c\keil c v5.31\ARM\ARMCC\include\stdio.h)(0x5EC7840C)
+I (D:\Keil C V5 - ARM\keil c\keil c v5.31\ARM\ARMCC\include\string.h)(0x5EC78414)
+I (D:\Keil C V5 - ARM\keil c\keil c v5.31\ARM\ARMCC\include\math.h)(0x5EC78414)
+I (main.h)(0x645F4DCF)
+I (gpio.h)(0x645F5096)
+I (systick.h)(0x645F52D3)
+I (spi_soft.h)(0x6462DD5A)
+F (.\gpio.c)(0x645F768A)(--c99 -c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork --split_sections-I.\RTE\_Program-I"D:\Keil C V5 - ARM\keil c\keil c v5.31\ARM\CMSIS\5.7.0\CMSIS\Core\Include"-I"D:\Keil C V5 - ARM\keil c\keil c v5.31\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F411xE -D_RTE_-o .\objects\gpio.o --omf_browse .\objects\gpio.crf --depend .\objects\gpio.d)
+I (port.h)(0x645F4D65)
+I (D:\Keil C V5 - ARM\keil c\keil c v5.31\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x5F6ADFE6)
+I (D:\Keil C V5 - ARM\keil c\keil c v5.31\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f411xe.h)(0x5F6ADFE6)
+I (D:\Keil C V5 - ARM\keil c\keil c v5.31\ARM\CMSIS\5.7.0\CMSIS\Core\Include\core_cm4.h)(0x5E8EDF32)
+I (D:\Keil C V5 - ARM\keil c\keil c v5.31\ARM\ARMCC\include\stdint.h)(0x5EC7840C)
+I (D:\Keil C V5 - ARM\keil c\keil c v5.31\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_version.h)(0x5E8EDF32)
+I (D:\Keil C V5 - ARM\keil c\keil c v5.31\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_compiler.h)(0x5E8314D2)
+I (D:\Keil C V5 - ARM\keil c\keil c v5.31\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_armcc.h)(0x5E8EDF32)
+I (D:\Keil C V5 - ARM\keil c\keil c v5.31\ARM\CMSIS\5.7.0\CMSIS\Core\Include\mpu_armv7.h)(0x5E8EDF32)
+I (D:\Keil C V5 - ARM\keil c\keil c v5.31\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h)(0x5F6ADFE6)
+I (gpio.h)(0x645F5096)
+F (.\gpio.h)(0x645F5096)()
+F (.\port.h)(0x645F4D65)()
+F (.\systick.h)(0x645F52D3)()
+F (.\systick.c)(0x6462FEA9)(--c99 -c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork --split_sections-I.\RTE\_Program-I"D:\Keil C V5 - ARM\keil c\keil c v5.31\ARM\CMSIS\5.7.0\CMSIS\Core\Include"-I"D:\Keil C V5 - ARM\keil c\keil c v5.31\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F411xE -D_RTE_-o .\objects\systick.o --omf_browse .\objects\systick.crf --depend .\objects\systick.d)
+I (port.h)(0x645F4D65)
+I (D:\Keil C V5 - ARM\keil c\keil c v5.31\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x5F6ADFE6)
+I (D:\Keil C V5 - ARM\keil c\keil c v5.31\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f411xe.h)(0x5F6ADFE6)
+I (D:\Keil C V5 - ARM\keil c\keil c v5.31\ARM\CMSIS\5.7.0\CMSIS\Core\Include\core_cm4.h)(0x5E8EDF32)
+I (D:\Keil C V5 - ARM\keil c\keil c v5.31\ARM\ARMCC\include\stdint.h)(0x5EC7840C)
+I (D:\Keil C V5 - ARM\keil c\keil c v5.31\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_version.h)(0x5E8EDF32)
+I (D:\Keil C V5 - ARM\keil c\keil c v5.31\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_compiler.h)(0x5E8314D2)
+I (D:\Keil C V5 - ARM\keil c\keil c v5.31\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_armcc.h)(0x5E8EDF32)
+I (D:\Keil C V5 - ARM\keil c\keil c v5.31\ARM\CMSIS\5.7.0\CMSIS\Core\Include\mpu_armv7.h)(0x5E8EDF32)
+I (D:\Keil C V5 - ARM\keil c\keil c v5.31\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h)(0x5F6ADFE6)
+I (systick.h)(0x645F52D3)
+F (.\spi_soft.h)(0x6462DD5A)()
+F (.\spi_soft.c)(0x6462DD2E)(--c99 -c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork --split_sections-I.\RTE\_Program-I"D:\Keil C V5 - ARM\keil c\keil c v5.31\ARM\CMSIS\5.7.0\CMSIS\Core\Include"-I"D:\Keil C V5 - ARM\keil c\keil c v5.31\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F411xE -D_RTE_-o .\objects\spi_soft.o --omf_browse .\objects\spi_soft.crf --depend .\objects\spi_soft.d)
+I (D:\Keil C V5 - ARM\keil c\keil c v5.31\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x5F6ADFE6)
+I (D:\Keil C V5 - ARM\keil c\keil c v5.31\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f411xe.h)(0x5F6ADFE6)
+I (D:\Keil C V5 - ARM\keil c\keil c v5.31\ARM\CMSIS\5.7.0\CMSIS\Core\Include\core_cm4.h)(0x5E8EDF32)
+I (D:\Keil C V5 - ARM\keil c\keil c v5.31\ARM\ARMCC\include\stdint.h)(0x5EC7840C)
+I (D:\Keil C V5 - ARM\keil c\keil c v5.31\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_version.h)(0x5E8EDF32)
+I (D:\Keil C V5 - ARM\keil c\keil c v5.31\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_compiler.h)(0x5E8314D2)
+I (D:\Keil C V5 - ARM\keil c\keil c v5.31\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_armcc.h)(0x5E8EDF32)
+I (D:\Keil C V5 - ARM\keil c\keil c v5.31\ARM\CMSIS\5.7.0\CMSIS\Core\Include\mpu_armv7.h)(0x5E8EDF32)
+I (D:\Keil C V5 - ARM\keil c\keil c v5.31\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h)(0x5F6ADFE6)
+I (spi_soft.h)(0x6462DD5A)
+I (gpio.h)(0x645F5096)
+I (systick.h)(0x645F52D3)
+F (RTE\Device\STM32F411VETx\startup_stm32f411xe.s)(0x5F6ADFE6)(--cpu Cortex-M4.fp.sp -g --apcs=interwork -I.\RTE\_Program-I"D:\Keil C V5 - ARM\keil c\keil c v5.31\ARM\CMSIS\5.7.0\CMSIS\Core\Include"-I"D:\Keil C V5 - ARM\keil c\keil c v5.31\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"--pd "__UVISION_VERSION SETA 531" --pd "_RTE_ SETA 1" --pd "STM32F411xE SETA 1" --pd "_RTE_ SETA 1"--list .\listings\startup_stm32f411xe.lst --xref -o .\objects\startup_stm32f411xe.o --depend .\objects\startup_stm32f411xe.d)
+F (RTE\Device\STM32F411VETx\system_stm32f4xx.c)(0x5F6ADFE6)(--c99 -c --cpu Cortex-M4.fp.sp -g -O0 --apcs=interwork --split_sections-I.\RTE\_Program-I"D:\Keil C V5 - ARM\keil c\keil c v5.31\ARM\CMSIS\5.7.0\CMSIS\Core\Include"-I"D:\Keil C V5 - ARM\keil c\keil c v5.31\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include"-D__UVISION_VERSION="531" -D_RTE_ -DSTM32F411xE -D_RTE_-o .\objects\system_stm32f4xx.o --omf_browse .\objects\system_stm32f4xx.crf --depend .\objects\system_stm32f4xx.d)
+I (D:\Keil C V5 - ARM\keil c\keil c v5.31\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x5F6ADFE6)
+I (D:\Keil C V5 - ARM\keil c\keil c v5.31\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f411xe.h)(0x5F6ADFE6)
+I (D:\Keil C V5 - ARM\keil c\keil c v5.31\ARM\CMSIS\5.7.0\CMSIS\Core\Include\core_cm4.h)(0x5E8EDF32)
+I (D:\Keil C V5 - ARM\keil c\keil c v5.31\ARM\ARMCC\include\stdint.h)(0x5EC7840C)
+I (D:\Keil C V5 - ARM\keil c\keil c v5.31\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_version.h)(0x5E8EDF32)
+I (D:\Keil C V5 - ARM\keil c\keil c v5.31\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_compiler.h)(0x5E8314D2)
+I (D:\Keil C V5 - ARM\keil c\keil c v5.31\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_armcc.h)(0x5E8EDF32)
+I (D:\Keil C V5 - ARM\keil c\keil c v5.31\ARM\CMSIS\5.7.0\CMSIS\Core\Include\mpu_armv7.h)(0x5E8EDF32)
+I (D:\Keil C V5 - ARM\keil c\keil c v5.31\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h)(0x5F6ADFE6)

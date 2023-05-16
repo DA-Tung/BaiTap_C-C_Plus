@@ -1,0 +1,11 @@
+--cpu=Cortex-M4.fp.sp
+".\objects\main.o"
+".\objects\gpio.o"
+".\objects\systick.o"
+".\objects\spi_soft.o"
+".\objects\startup_stm32f411xe.o"
+".\objects\system_stm32f4xx.o"
+--strict --scatter ".\Objects\spi_soft_slave.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\Listings\spi_soft_slave.map" -o .\Objects\spi_soft_slave.axf
