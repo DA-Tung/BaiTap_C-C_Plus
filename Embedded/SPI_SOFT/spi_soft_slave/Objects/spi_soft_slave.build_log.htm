@@ -21,27 +21,22 @@ Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.7.0
 Dialog DLL:      TCM.DLL V1.46.0.0
  
 <h2>Project:</h2>
-D:\Keil C V5 - ARM\project\STM32F407_REG\spi\spi_soft\spi_soft_slave\spi_soft_slave.uvprojx
+D:\Keil C V5 - ARM\project\STM32F407_REG\spi\SPI_SOFT\spi_soft_slave\spi_soft_slave.uvprojx
 Project File Date:  05/16/2023
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'D:\Keil C V5 - ARM\keil c\keil c v5.31\ARM\ARMCC\Bin'
 Rebuild target 'Program'
-compiling gpio.c...
-compiling systick.c...
-compiling main.c...
-main.c(37): warning:  #177-D: variable "receive_data"  was declared but never referenced
-  	uint8_t receive_data[4];
-main.c(38): warning:  #177-D: variable "transmit_data"  was declared but never referenced
-  	uint8_t transmit_data[4] = {0x0C,0x0D,0x0E,0x0F};	
-main.c: 2 warnings, 0 errors
 compiling spi_soft.c...
+compiling systick.c...
+compiling gpio.c...
+compiling main.c...
 assembling startup_stm32f411xe.s...
 compiling system_stm32f4xx.c...
 linking...
-Program Size: Code=1040 RO-data=424 RW-data=0 ZI-data=1632  
+Program Size: Code=1160 RO-data=440 RW-data=12 ZI-data=1636  
 FromELF: creating hex file...
-".\Objects\spi_soft_slave.axf" - 0 Error(s), 2 Warning(s).
+".\Objects\spi_soft_slave.axf" - 0 Error(s), 0 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -68,11 +63,11 @@ Package Vendor: Keil
 
    * Component: Keil::Device:Startup:2.6.3
       Source file:   MDK\Device\Source\ARM\STM32F411xx_OPT.s
-      Source file:   MDK\Device\Source\ARM\STM32F4xx_OTP.s
       Include file:  Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h
+      Source file:   MDK\Device\Source\ARM\STM32F4xx_OTP.s
       Source file:   Drivers\CMSIS\Device\ST\STM32F4xx\Source\Templates\arm\startup_stm32f411xe.s
       Source file:   Drivers\CMSIS\Device\ST\STM32F4xx\Source\Templates\system_stm32f4xx.c
-Build Time Elapsed:  00:00:03
+Build Time Elapsed:  00:00:02
 </pre>
 </body>
 </html>

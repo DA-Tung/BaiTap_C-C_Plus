@@ -71,22 +71,25 @@ uint8_t SPI_Master_Receive(void)
 	Funcion : SPI Master transmit and receive
 	Purpure : transmit and receive 1 byte 
 */
-uint8_t SPI_Master_ReadWrite(uint8_t w_data)
+uint8_t SPI_Master_ReadWrite(uint8_t w_data)           
 {
 	uint8_t r_data;
-	for(uint8_t s_bit = 0x80; s_bit > 0; s_bit = s_bit >> 1)		//program implementation transmit each bit at MISO Pin
+	for(uint8_t s_bit = 0x80; s_bit > 0; s_bit = s_bit >> 1)		// Program implementation transmit each bit at MISO Pin
 	{
 		if((w_data&s_bit) == 0)	MOSI_RST;							// Check status each bit to transmit data
-		else					MOSI_SET; 	
+		else					MOSI_SET; 	 
 
-		delay_systick_us(50);										
+		delay_systick_us(10);										
 		SCK_SET;													// Set SCK is high level to read data
 		if(MISO_PIN == BIT_SET)			r_data = r_data | s_bit;	// Read status of MISO Pin 
-		delay_systick_us(50);										
+		delay_systick_us(10);										
 		SCK_RST;													// Set SCK is low level to end of 1 clock cycle
 	}
 	return r_data;
 }
+
+
+
 
 
 

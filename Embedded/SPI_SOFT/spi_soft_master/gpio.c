@@ -4,20 +4,8 @@
 
 // GPIO_OUTPUT
 //-----------------------------------------------------------------------------------------------------------------------------------------------
-void gpio_output(GPIO_TypeDef* GPIOx, uint16_t PORTx, uint16_t PINx, GPIO_PinState state)
+void gpio_output(GPIO_TypeDef* GPIOx, uint16_t PINx, GPIO_PinState state)
 {
-//		// Enable GPIO
-//		RCC->AHB1ENR |= (1 << PORTx);
-//	
-//		// Select PIN and Mode I/O
-//		GPIOx->MODER |= (1 << (PINx*2));
-//	
-//		// Configure I/O output type
-//		GPIOx->OTYPER |= 0;
-//	
-//		// Configure output speed
-//		GPIOx->OSPEEDR |= (uint32_t)(3 << (PINx*2));
-	
 		// Set bit
 		if(state == PIN_SET) GPIOx->ODR |= (1 << PINx);
 	
@@ -29,19 +17,10 @@ void gpio_output(GPIO_TypeDef* GPIOx, uint16_t PORTx, uint16_t PINx, GPIO_PinSta
 }
 
 // GPIO_INPUT_______________________________________________________________
-Bit_Status gpio_input(GPIO_TypeDef* GPIOx, uint16_t PORTx, uint16_t PINx)
+Bit_Status gpio_input(GPIO_TypeDef* GPIOx, uint16_t PINx)
 {	
 		Bit_Status status;
-
-//		// Enable GPIO	
-//		RCC->AHB1ENR |= (1 << PORTx);
-//	
-//	  	// Input Mode
-//		GPIOx->MODER = 0;
-//	
-//		// No pull-up and pull-down		
-//		GPIOx->PUPDR |= 0;
-		
+	
 		// Check status bit
 		if((GPIOx->IDR & (1 << PINx)) != 0) status = BIT_SET;
 		else status = BIT_RESET;

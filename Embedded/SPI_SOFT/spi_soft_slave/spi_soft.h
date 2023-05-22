@@ -16,12 +16,12 @@
 #define MISO_CONFIG					gpio_config(GPIOA,PORTA,Slave_MISO,PIN_OUTPUT)		// Config MISO Pin of Slave is OUTPUT
 #define BUTTON_CONFIG				gpio_config(GPIOA,PORTA,0,PIN_INPUT)
 // Define macro PIN
-#define SS_PIN						gpio_input(GPIOA,PORTA,Slave_SS)					// SS Pin input
-#define SCK_PIN						gpio_input(GPIOA,PORTA,Slave_SCK)					// SCK Pin input
-#define MOSI_PIN					gpio_input(GPIOA,PORTA,Slave_MOSI)					// MOSI Pin input
-#define MISO_SET					gpio_output(GPIOA,PORTA,Slave_MISO,PIN_SET)			// Set MISO Pin of Slave
-#define MISO_RST					gpio_output(GPIOA,PORTA,Slave_MISO,PIN_RESET)		// Reset MISO Pin of Slave						// MISO Pin INPUT
-#define BUTTON						gpio_input(GPIOA,PORTA,0)
+#define SS_PIN						gpio_input(GPIOA,Slave_SS)					// SS Pin input
+#define SCK_PIN						gpio_input(GPIOA,Slave_SCK)					// SCK Pin input
+#define MOSI_PIN					gpio_input(GPIOA,Slave_MOSI)					// MOSI Pin input
+#define MISO_SET					gpio_output(GPIOA,Slave_MISO,PIN_SET)			// Set MISO Pin of Slave
+#define MISO_RST					gpio_output(GPIOA,Slave_MISO,PIN_RESET)		// Reset MISO Pin of Slave						// MISO Pin INPUT
+#define BUTTON						gpio_input(GPIOA,0)
 
 // Declare Funcion Slave
 void SPI_Slave_Init(void);							// Funcion init Slave SPI

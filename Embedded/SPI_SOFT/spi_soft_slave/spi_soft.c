@@ -49,10 +49,10 @@ uint8_t SPI_Slave_Receive(void)
 	// program implementation receive 1 byte at MOSI Pin
 	for(uint8_t i = 0; i < 8; i++)
 	{	
-		while(SCK_PIN == PIN_RESET);	// Waiting until SCK is High to read data
+		while(SCK_PIN == BIT_RESET);	// Waiting until SCK is High to read data
 		data = data << 1;				// shift bit to the left to continue transmit next bit
 		data = data | MOSI_PIN;			// Get value of each bit		
-		while(SCK_PIN == PIN_SET);		// Waiting until SCK is Low to end of 1 clock cycle	
+		while(SCK_PIN == BIT_SET);		// Waiting until SCK is Low to end of 1 clock cycle	
 	}
 	return data;						// Reteurn value of data after end receive
 }
@@ -65,15 +65,15 @@ uint8_t SPI_Slave_Receive(void)
 uint8_t SPI_Slave_ReadWrite(uint8_t w_data)
 {
 	uint8_t r_data;
-	
-	while(SS_PIN == PIN_SET);										// Waiting SPI Master Enable
+	while(SS_PIN == BIT_SET);										// Waiting SPI Master Enable
 	for(uint8_t s_bit = 0x80; s_bit > 0; s_bit = s_bit >> 1)		//program implementation transmit each bit at MISO Pin
 	{
 		if((w_data&s_bit) == 0)			MISO_RST;					// Check status each bit to transmit data
 		else							MISO_SET;
-		while(SCK_PIN == PIN_RESET);								// Waiting until SCK is High to read data		
+		
+		while(SCK_PIN == BIT_RESET);								// Waiting until SCK is High to read data				
 		if(MOSI_PIN == PIN_SET)			r_data = r_data | s_bit;	// Get value of each bit
-		while(SCK_PIN == PIN_SET);									// Waiting until SCK is Low to end of 1 clock cycle			
+		while(SCK_PIN == BIT_SET);									// Waiting until SCK is Low to end of 1 clock cycle			
 	}
 	return r_data;													// Return value of r_data
 }

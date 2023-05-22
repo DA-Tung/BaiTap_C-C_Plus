@@ -71,7 +71,7 @@ void delay_systick_us(uint32_t time)
 	while(time)
 	{
 		// Configure parameter for 1 us	
-		SysTick->LOAD = 167;
+		SysTick->LOAD = 143;
 		
 		// Current value of Systick counter
 		SysTick->VAL = 0;
