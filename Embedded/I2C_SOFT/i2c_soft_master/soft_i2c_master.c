@@ -196,6 +196,7 @@ void I2C_Master_Read_Data(uint8_t address, RW_Data *Read_data)
 		{
 			// Read data form slave
 			Read_data->data[i] = receive_data;
+			i++;
 			// Ceate Ack bit to feedback
 			I2C_Master_Ack();
 		}
